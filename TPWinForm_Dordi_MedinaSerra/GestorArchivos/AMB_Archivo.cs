@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GestorArchivos
 {
-    public partial class MenuPrincipal : Form
+    public partial class AMB_Archivo : Form
     {
-        public MenuPrincipal()
+        public AMB_Archivo()
         {
             InitializeComponent();
-        }
-
-        private void aMBArticulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new AMB_Archivo().Show();
         }
     }
 }
