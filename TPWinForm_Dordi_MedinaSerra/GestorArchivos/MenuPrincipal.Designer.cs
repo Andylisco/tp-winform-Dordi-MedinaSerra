@@ -74,8 +74,8 @@ namespace GestorArchivos
             // aMBArticulosToolStripMenuItem
             // 
             this.aMBArticulosToolStripMenuItem.Name = "aMBArticulosToolStripMenuItem";
-            this.aMBArticulosToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.aMBArticulosToolStripMenuItem.Text = "AMB Articulos";
+            this.aMBArticulosToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.aMBArticulosToolStripMenuItem.Text = "AMB Articulo";
             this.aMBArticulosToolStripMenuItem.Click += new System.EventHandler(this.aMBArticulosToolStripMenuItem_Click);
             // 
             // listadosToolStripMenuItem

@@ -65,11 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AMB_Archivo.cs">
+    <Compile Include="AMB_Articulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AMB_Archivo.Designer.cs">
-      <DependentUpon>AMB_Archivo.cs</DependentUpon>
+    <Compile Include="AMB_Articulo.Designer.cs">
+      <DependentUpon>AMB_Articulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\Articulo.cs" />
     <Compile Include="MenuPrincipal.cs">
@@ -80,6 +80,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AMB_Articulo.resx">
+      <DependentUpon>AMB_Articulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

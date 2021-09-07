@@ -19,7 +19,7 @@ namespace GestorArchivos
 
         private void aMBArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AMB_Archivo().Show();
+            new AMB_Articulo().Show();
         }
     }
 }
