@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestorArchivos
+namespace GestorArchivos.Clases
 {
     class Articulo
     {
@@ -12,10 +12,13 @@ namespace GestorArchivos
         public string Codigo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public int Categoria { get; set; }
-        public int Marcar { get; set; }
+        public Categoria Categoria { get; set; }
+        public Marca Marca { get; set; }
         public string URLImagen{ get; set; }
         public decimal Precio { get; set; }
+
+        
+          
 
     }
 }

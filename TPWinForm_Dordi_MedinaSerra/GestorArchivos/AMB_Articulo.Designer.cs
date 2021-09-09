@@ -199,7 +199,7 @@ namespace GestorArchivos
             // 
             // btn_Grabar
             // 
-            this.btn_Grabar.Location = new System.Drawing.Point(32, 338);
+            this.btn_Grabar.Location = new System.Drawing.Point(32, 269);
             this.btn_Grabar.Name = "btn_Grabar";
             this.btn_Grabar.Size = new System.Drawing.Size(118, 67);
             this.btn_Grabar.TabIndex = 17;
@@ -217,7 +217,7 @@ namespace GestorArchivos
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(32, 274);
+            this.btn_Limpiar.Location = new System.Drawing.Point(32, 335);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(118, 67);
             this.btn_Limpiar.TabIndex = 19;
@@ -231,7 +231,6 @@ namespace GestorArchivos
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.Size = new System.Drawing.Size(464, 199);
             this.dgvArticulos.TabIndex = 20;
-            this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
             // 
             // AMB_Articulo
             // 

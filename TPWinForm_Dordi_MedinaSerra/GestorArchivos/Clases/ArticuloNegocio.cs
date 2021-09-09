@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace GestorArchivos.Clases
 {
     class ArticuloNegocio
     {
-
-        public List<Articulo> listar()
+        public  List<Articulo> listar()
+        {
+            return  listar("");
+            
+        }
+        public List<Articulo> listar(string Consulta)
         {
             List<Articulo> lista = new List<Articulo>();
             SqlConnection conexion = new SqlConnection();
@@ -20,9 +25,21 @@ namespace GestorArchivos.Clases
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLESPRESS0; database=CATALOGO_DB; integrated security=true";
+                //SE IMPLEMENTO LA RUTA DE CONECCION EN EL App.config SE LLAMA A LA MISMA USANDO CONFIGURATIONMANGER Y EL NOMBRE
+                ConnectionStringSettings Configuracion = ConfigurationManager.ConnectionStrings["CS"];
+                conexion.ConnectionString = (string)Configuracion.ConnectionString;
+                //
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT id,Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio FROM ARTICULOS";
+
+                if (Consulta == "")
+                {
+                    comando.CommandText = "SELECT id,Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio FROM ARTICULOS"; 
+                }
+                else
+                { 
+                    comando.CommandText = Consulta;
+                }
+                
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -31,15 +48,24 @@ namespace GestorArchivos.Clases
                 while (lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    //Modifique como recibimos los datos para facilitar la lectura de los mismos
+                    aux.id = (int)lector["Id"];
+                    aux.Codigo = (string)lector["Codigo"];
+                    aux.Nombre = (string)lector["Nombre"];
+                    aux.Descripcion = (string)lector["Descripcion"];
+                    //SE CARGA LAS PROPIEDADES MARCA Y CATEGORIA COMO OBJETOS
+                    Marca AuxMarca= new Marca();
+                    AuxMarca.id = (int)lector["IdMarca"];
+                    AuxMarca.Descripcion = "";
+                    aux.Marca = AuxMarca;
 
-                    aux.id = lector.GetInt32(0);
-                    aux.Codigo = lector.GetString(1);
-                    aux.Nombre = lector.GetString(2);
-                    aux.Descripcion = lector.GetString(3);
-                    aux.Marcar = lector.GetInt32(4);
-                    aux.Categoria = lector.GetInt32(5);
-                    aux.URLImagen = lector.GetString(6);
-                    aux.Precio = lector.GetDecimal(7);
+                    Categoria AuxCate = new Categoria();
+                    AuxCate.id = (int)lector["IdCategoria"];
+                    AuxCate.Descripcion = "";
+                    aux.Categoria = AuxCate;                    
+                    //
+                    aux.URLImagen = (string)lector["ImagenURL"];
+                    aux.Precio = (decimal)lector["Precio"];
 
                     lista.Add(aux);
                 }

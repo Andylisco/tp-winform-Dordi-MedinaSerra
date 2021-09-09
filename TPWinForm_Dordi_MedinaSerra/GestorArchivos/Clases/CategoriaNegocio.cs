@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Configuration;
 
-namespace GestorArchivos
+namespace GestorArchivos.Clases
 {
     class CategoriaNegocio
     {
@@ -21,9 +22,12 @@ namespace GestorArchivos
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLESPRESS0; database=CATALOGO_DB; integrated security=true";
+                //SE IMPLEMENTO LA RUTA DE CONECCION EN EL App.config SE LLAMA A LA MISMA USANDO CONFIGURATIONMANGER Y EL NOMBRE
+                ConnectionStringSettings Configuracion = ConfigurationManager.ConnectionStrings["CS"];
+                conexion.ConnectionString = (string)Configuracion.ConnectionString;
+                //
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Id,Descripcion  From CATEGORIAS";
+                comando.CommandText = "SELECT Id,Descripcion  From CATEGORIAS ORDER BY Id ASC";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -33,8 +37,8 @@ namespace GestorArchivos
                 {
                     Categoria aux = new Categoria();
 
-                    aux.id = lector.GetInt32(0);
-                    aux.Descripcion = lector.GetString(3);
+                    aux.id = (int)lector["ID"];
+                    aux.Descripcion = (string)lector["Descripcion"];
 
                     lista.Add(aux);
                 }
