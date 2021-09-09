@@ -75,6 +75,8 @@
     <Compile Include="Clases\CategoriaNegocio.cs" />
     <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\ArticuloNegocio.cs" />
+    <Compile Include="Clases\Marca.cs" />
+    <Compile Include="Clases\MarcaNegocio.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
