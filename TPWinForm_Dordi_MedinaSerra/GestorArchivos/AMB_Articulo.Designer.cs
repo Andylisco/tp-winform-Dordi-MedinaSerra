@@ -43,14 +43,14 @@ namespace GestorArchivos
             this.cbx_Marca = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_Precio = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_URLImagen = new System.Windows.Forms.TextBox();
             this.btn_Grabar = new System.Windows.Forms.Button();
             this.btn_Cerrar = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pnl_Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Menu
@@ -180,14 +180,6 @@ namespace GestorArchivos
             this.txt_Precio.TabIndex = 13;
             this.txt_Precio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(342, 257);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(287, 246);
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -207,7 +199,7 @@ namespace GestorArchivos
             // 
             // btn_Grabar
             // 
-            this.btn_Grabar.Location = new System.Drawing.Point(41, 321);
+            this.btn_Grabar.Location = new System.Drawing.Point(32, 338);
             this.btn_Grabar.Name = "btn_Grabar";
             this.btn_Grabar.Size = new System.Drawing.Size(118, 67);
             this.btn_Grabar.TabIndex = 17;
@@ -216,7 +208,7 @@ namespace GestorArchivos
             // 
             // btn_Cerrar
             // 
-            this.btn_Cerrar.Location = new System.Drawing.Point(113, 413);
+            this.btn_Cerrar.Location = new System.Drawing.Point(32, 401);
             this.btn_Cerrar.Name = "btn_Cerrar";
             this.btn_Cerrar.Size = new System.Drawing.Size(118, 67);
             this.btn_Cerrar.TabIndex = 18;
@@ -225,24 +217,33 @@ namespace GestorArchivos
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(193, 321);
+            this.btn_Limpiar.Location = new System.Drawing.Point(32, 274);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(118, 67);
             this.btn_Limpiar.TabIndex = 19;
             this.btn_Limpiar.Text = "LIMPIAR PANTALLA";
             this.btn_Limpiar.UseVisualStyleBackColor = true;
             // 
+            // dgvArticulos
+            // 
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.Location = new System.Drawing.Point(182, 269);
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.Size = new System.Drawing.Size(464, 199);
+            this.dgvArticulos.TabIndex = 20;
+            this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
+            // 
             // AMB_Articulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 515);
+            this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.btn_Cerrar);
             this.Controls.Add(this.btn_Grabar);
             this.Controls.Add(this.txt_URLImagen);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txt_Precio);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbx_Marca);
@@ -262,7 +263,7 @@ namespace GestorArchivos
             this.Load += new System.EventHandler(this.AMB_Articulo_Load);
             this.pnl_Menu.ResumeLayout(false);
             this.pnl_Menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,11 +285,11 @@ namespace GestorArchivos
         private System.Windows.Forms.ComboBox cbx_Marca;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_Precio;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_URLImagen;
         private System.Windows.Forms.Button btn_Grabar;
         private System.Windows.Forms.Button btn_Cerrar;
         private System.Windows.Forms.Button btn_Limpiar;
+        private System.Windows.Forms.DataGridView dgvArticulos;
     }
 }

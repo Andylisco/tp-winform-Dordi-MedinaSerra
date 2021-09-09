@@ -72,6 +72,7 @@
       <DependentUpon>AMB_Articulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\Articulo.cs" />
+    <Compile Include="Clases\ArticuloNegocio.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>

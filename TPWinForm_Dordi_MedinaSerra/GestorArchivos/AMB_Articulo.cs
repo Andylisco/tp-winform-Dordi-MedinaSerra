@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorArchivos.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+
 
 
 namespace GestorArchivos
@@ -21,10 +22,18 @@ namespace GestorArchivos
 
         private void AMB_Articulo_Load(object sender, EventArgs e)
         {
-            CargaCombos();
+            // CargaCombos();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
+
         }
 
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
+
+        /*
         private void CargaCombos()
         {
             CargaCategorias();
@@ -68,7 +77,7 @@ namespace GestorArchivos
                 MessageBox.Show("Error al conectar a base Categorias");
             }
 
-        }
+        
         private void CargaMarcas()
         {
             SqlConnection conexion = new SqlConnection();
@@ -105,7 +114,7 @@ namespace GestorArchivos
                 MessageBox.Show("Error al conectar a base Marcas");
             }
 
-        }
+        }*/
 
     }
 }
