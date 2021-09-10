@@ -30,15 +30,12 @@ namespace GestorArchivos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl_Menu = new System.Windows.Forms.Panel();
             this.lbl_Menu = new System.Windows.Forms.Label();
             this.lbl_Filtrar = new System.Windows.Forms.Label();
             this.txt_Filtro = new System.Windows.Forms.TextBox();
             this.dgv_Articulos = new System.Windows.Forms.DataGridView();
-            this.pb_Seleccion_dgv = new System.Windows.Forms.PictureBox();
-            this.btn_NuevoArticulo = new System.Windows.Forms.Button();
-            this.btn_Cerrar = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,11 +45,14 @@ namespace GestorArchivos
             this.UrlImagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.bORRARARTICULOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BORRARARTICULOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pb_Seleccion_dgv = new System.Windows.Forms.PictureBox();
+            this.btn_NuevoArticulo = new System.Windows.Forms.Button();
+            this.btn_Cerrar = new System.Windows.Forms.Button();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Articulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Seleccion_dgv)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Seleccion_dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Menu
@@ -120,35 +120,6 @@ namespace GestorArchivos
             this.dgv_Articulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_Articulos_KeyDown);
             this.dgv_Articulos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgv_Articulos_KeyPress);
             // 
-            // pb_Seleccion_dgv
-            // 
-            this.pb_Seleccion_dgv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pb_Seleccion_dgv.Location = new System.Drawing.Point(795, 150);
-            this.pb_Seleccion_dgv.Name = "pb_Seleccion_dgv";
-            this.pb_Seleccion_dgv.Size = new System.Drawing.Size(305, 258);
-            this.pb_Seleccion_dgv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_Seleccion_dgv.TabIndex = 5;
-            this.pb_Seleccion_dgv.TabStop = false;
-            // 
-            // btn_NuevoArticulo
-            // 
-            this.btn_NuevoArticulo.Location = new System.Drawing.Point(808, 73);
-            this.btn_NuevoArticulo.Name = "btn_NuevoArticulo";
-            this.btn_NuevoArticulo.Size = new System.Drawing.Size(129, 61);
-            this.btn_NuevoArticulo.TabIndex = 6;
-            this.btn_NuevoArticulo.Text = "NUEVO ARTICULO";
-            this.btn_NuevoArticulo.UseVisualStyleBackColor = true;
-            // 
-            // btn_Cerrar
-            // 
-            this.btn_Cerrar.Location = new System.Drawing.Point(958, 73);
-            this.btn_Cerrar.Name = "btn_Cerrar";
-            this.btn_Cerrar.Size = new System.Drawing.Size(129, 61);
-            this.btn_Cerrar.TabIndex = 7;
-            this.btn_Cerrar.Text = "CERRAR";
-            this.btn_Cerrar.UseVisualStyleBackColor = true;
-            this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
-            // 
             // Id
             // 
             this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -211,10 +182,10 @@ namespace GestorArchivos
             // 
             this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Precio.DataPropertyName = "Precio";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N4";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Precio.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N4";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Precio.DefaultCellStyle = dataGridViewCellStyle1;
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
@@ -223,16 +194,46 @@ namespace GestorArchivos
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bORRARARTICULOToolStripMenuItem});
+            this.BORRARARTICULOToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(177, 26);
             // 
-            // bORRARARTICULOToolStripMenuItem
+            // BORRARARTICULOToolStripMenuItem
             // 
-            this.bORRARARTICULOToolStripMenuItem.Name = "bORRARARTICULOToolStripMenuItem";
-            this.bORRARARTICULOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bORRARARTICULOToolStripMenuItem.Text = "BORRAR ARTICULO";
-            this.bORRARARTICULOToolStripMenuItem.Click += new System.EventHandler(this.bORRARARTICULOToolStripMenuItem_Click);
+            this.BORRARARTICULOToolStripMenuItem.Name = "BORRARARTICULOToolStripMenuItem";
+            this.BORRARARTICULOToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.BORRARARTICULOToolStripMenuItem.Text = "BORRAR ARTICULO";
+            this.BORRARARTICULOToolStripMenuItem.Click += new System.EventHandler(this.BORRARARTICULOToolStripMenuItem_Click);
+            // 
+            // pb_Seleccion_dgv
+            // 
+            this.pb_Seleccion_dgv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pb_Seleccion_dgv.Location = new System.Drawing.Point(795, 150);
+            this.pb_Seleccion_dgv.Name = "pb_Seleccion_dgv";
+            this.pb_Seleccion_dgv.Size = new System.Drawing.Size(305, 258);
+            this.pb_Seleccion_dgv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_Seleccion_dgv.TabIndex = 5;
+            this.pb_Seleccion_dgv.TabStop = false;
+            // 
+            // btn_NuevoArticulo
+            // 
+            this.btn_NuevoArticulo.Location = new System.Drawing.Point(808, 73);
+            this.btn_NuevoArticulo.Name = "btn_NuevoArticulo";
+            this.btn_NuevoArticulo.Size = new System.Drawing.Size(129, 61);
+            this.btn_NuevoArticulo.TabIndex = 6;
+            this.btn_NuevoArticulo.Text = "NUEVO ARTICULO";
+            this.btn_NuevoArticulo.UseVisualStyleBackColor = true;
+            this.btn_NuevoArticulo.Click += new System.EventHandler(this.btn_NuevoArticulo_Click);
+            // 
+            // btn_Cerrar
+            // 
+            this.btn_Cerrar.Location = new System.Drawing.Point(958, 73);
+            this.btn_Cerrar.Name = "btn_Cerrar";
+            this.btn_Cerrar.Size = new System.Drawing.Size(129, 61);
+            this.btn_Cerrar.TabIndex = 7;
+            this.btn_Cerrar.Text = "CERRAR";
+            this.btn_Cerrar.UseVisualStyleBackColor = true;
+            this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
             // 
             // ListadoArticulos
             // 
@@ -251,8 +252,8 @@ namespace GestorArchivos
             this.pnl_Menu.ResumeLayout(false);
             this.pnl_Menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Articulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Seleccion_dgv)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Seleccion_dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,6 +278,6 @@ namespace GestorArchivos
         private System.Windows.Forms.DataGridViewTextBoxColumn UrlImagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem bORRARARTICULOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BORRARARTICULOToolStripMenuItem;
     }
 }

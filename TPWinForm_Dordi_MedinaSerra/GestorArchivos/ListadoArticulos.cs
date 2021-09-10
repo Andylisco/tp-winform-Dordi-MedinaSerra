@@ -97,9 +97,14 @@ namespace GestorArchivos
             dgv_Articulos.CurrentRow.Selected = true;
         }
 
-        private void bORRARARTICULOToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BORRARARTICULOToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_NuevoArticulo_Click(object sender, EventArgs e)
+        {
+            new AMB_Articulo().Show();
         }
     }
 }

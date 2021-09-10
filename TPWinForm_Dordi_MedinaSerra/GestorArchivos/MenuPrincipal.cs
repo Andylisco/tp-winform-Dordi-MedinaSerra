@@ -22,9 +22,15 @@ namespace GestorArchivos
             new AMB_Articulo().Show();
         }
 
-        private void buscarPorCodigoToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void crearNuevoArticuloToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ListadoArticulos().Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

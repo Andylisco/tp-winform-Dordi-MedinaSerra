@@ -33,8 +33,12 @@ namespace GestorArchivos
             this.lbl_Menu = new System.Windows.Forms.Label();
             this.mt_Menu = new System.Windows.Forms.MenuStrip();
             this.aMBArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearNuevoArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrarArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarPorCodigoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Menu.SuspendLayout();
             this.mt_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +68,8 @@ namespace GestorArchivos
             // 
             this.mt_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aMBArticulosToolStripMenuItem,
-            this.listadosToolStripMenuItem});
+            this.listadosToolStripMenuItem,
+            this.salirToolStripMenuItem});
             this.mt_Menu.Location = new System.Drawing.Point(0, 0);
             this.mt_Menu.Name = "mt_Menu";
             this.mt_Menu.Size = new System.Drawing.Size(851, 24);
@@ -73,25 +78,61 @@ namespace GestorArchivos
             // 
             // aMBArticulosToolStripMenuItem
             // 
+            this.aMBArticulosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearNuevoArticuloToolStripMenuItem,
+            this.modificarArticuloToolStripMenuItem,
+            this.borrarArticuloToolStripMenuItem});
             this.aMBArticulosToolStripMenuItem.Name = "aMBArticulosToolStripMenuItem";
-            this.aMBArticulosToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.aMBArticulosToolStripMenuItem.Text = "AMB Articulo";
+            this.aMBArticulosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.aMBArticulosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.aMBArticulosToolStripMenuItem.Text = "&Articulo";
             this.aMBArticulosToolStripMenuItem.Click += new System.EventHandler(this.aMBArticulosToolStripMenuItem_Click);
+            // 
+            // crearNuevoArticuloToolStripMenuItem
+            // 
+            this.crearNuevoArticuloToolStripMenuItem.Name = "crearNuevoArticuloToolStripMenuItem";
+            this.crearNuevoArticuloToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.crearNuevoArticuloToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.crearNuevoArticuloToolStripMenuItem.Text = "Crear &Nuevo Articulo";
+            this.crearNuevoArticuloToolStripMenuItem.Click += new System.EventHandler(this.crearNuevoArticuloToolStripMenuItem_Click);
+            // 
+            // modificarArticuloToolStripMenuItem
+            // 
+            this.modificarArticuloToolStripMenuItem.Name = "modificarArticuloToolStripMenuItem";
+            this.modificarArticuloToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.modificarArticuloToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.modificarArticuloToolStripMenuItem.Text = "&Modificar Articulo";
+            // 
+            // borrarArticuloToolStripMenuItem
+            // 
+            this.borrarArticuloToolStripMenuItem.Name = "borrarArticuloToolStripMenuItem";
+            this.borrarArticuloToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.borrarArticuloToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.borrarArticuloToolStripMenuItem.Text = "&Borrar Articulo";
             // 
             // listadosToolStripMenuItem
             // 
             this.listadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buscarPorCodigoToolStripMenuItem});
             this.listadosToolStripMenuItem.Name = "listadosToolStripMenuItem";
+            this.listadosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
             this.listadosToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.listadosToolStripMenuItem.Text = "Listados ";
+            this.listadosToolStripMenuItem.Text = "&Listados ";
             // 
             // buscarPorCodigoToolStripMenuItem
             // 
             this.buscarPorCodigoToolStripMenuItem.Name = "buscarPorCodigoToolStripMenuItem";
-            this.buscarPorCodigoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.buscarPorCodigoToolStripMenuItem.Text = "Articulos";
-            this.buscarPorCodigoToolStripMenuItem.Click += new System.EventHandler(this.buscarPorCodigoToolStripMenuItem_Click);
+            this.buscarPorCodigoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.buscarPorCodigoToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.buscarPorCodigoToolStripMenuItem.Text = "&Lista Articulos";
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.salirToolStripMenuItem.Text = "&Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -120,6 +161,10 @@ namespace GestorArchivos
         private System.Windows.Forms.ToolStripMenuItem aMBArticulosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarPorCodigoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearNuevoArticuloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarArticuloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem borrarArticuloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
     }
 }
 
