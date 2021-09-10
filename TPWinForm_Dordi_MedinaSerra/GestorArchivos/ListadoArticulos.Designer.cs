@@ -119,6 +119,7 @@ namespace GestorArchivos
             this.dgv_Articulos.SelectionChanged += new System.EventHandler(this.dgv_Articulos_SelectionChanged);
             this.dgv_Articulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_Articulos_KeyDown);
             this.dgv_Articulos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgv_Articulos_KeyPress);
+            this.dgv_Articulos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgv_Articulos_MouseDown_1);
             // 
             // Id
             // 

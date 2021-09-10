@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
-
+using System.Windows.Forms;
 
 namespace GestorArchivos.Clases
 {
@@ -33,7 +33,7 @@ namespace GestorArchivos.Clases
 
                 if (Consulta == "")
                 {
-                    comando.CommandText = "SELECT id,Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio FROM ARTICULOS"; 
+                    comando.CommandText = "SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS"; 
                 }
                 else
                 { 
@@ -81,5 +81,36 @@ namespace GestorArchivos.Clases
 
             
         }
+
+        public void BorrarArt(int ID)
+        {
+            SqlConnection Conexion = new SqlConnection();
+            SqlCommand Comando = new SqlCommand();
+            
+            ConnectionStringSettings CS = ConfigurationManager.ConnectionStrings["CS"];
+            Conexion.ConnectionString = (string)CS.ConnectionString;
+            Comando.CommandType = System.Data.CommandType.Text;
+            Comando.CommandText = "DELETE FROM Articulos WHERE Id = " + ID + "";
+
+            Comando.Connection = Conexion;
+
+            try
+            {
+                Conexion.Open();
+                               
+
+                if (Comando.ExecuteNonQuery() == 1)
+                    MessageBox.Show("Se elimino correctamente el registro", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Conexion.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Ocurrio un error al querer eliminar el registro","Aviso del Sistema", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+            }
+            
+
+        }
+
     }
 }

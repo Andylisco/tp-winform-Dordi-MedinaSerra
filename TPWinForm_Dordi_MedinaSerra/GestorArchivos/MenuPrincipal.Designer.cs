@@ -86,7 +86,7 @@ namespace GestorArchivos
             this.aMBArticulosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.aMBArticulosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.aMBArticulosToolStripMenuItem.Text = "&Articulo";
-            this.aMBArticulosToolStripMenuItem.Click += new System.EventHandler(this.aMBArticulosToolStripMenuItem_Click);
+            
             // 
             // crearNuevoArticuloToolStripMenuItem
             // 
@@ -125,6 +125,7 @@ namespace GestorArchivos
             this.buscarPorCodigoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
             this.buscarPorCodigoToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.buscarPorCodigoToolStripMenuItem.Text = "&Lista Articulos";
+            this.buscarPorCodigoToolStripMenuItem.Click += new System.EventHandler(this.buscarPorCodigoToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 

@@ -17,20 +17,21 @@ namespace GestorArchivos
             InitializeComponent();
         }
 
-        private void aMBArticulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new AMB_Articulo().Show();
-        }
-
-
+        
         private void crearNuevoArticuloToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ListadoArticulos().Show();
+            new AMB_Articulo().Show();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buscarPorCodigoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ListadoArticulos().Show();
+
         }
     }
 }

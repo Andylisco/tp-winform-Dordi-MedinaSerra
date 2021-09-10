@@ -11,6 +11,7 @@ using GestorArchivos.Clases;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Configuration;
+using static System.Windows.Forms.DataGridView;
 
 namespace GestorArchivos
 {
@@ -99,12 +100,46 @@ namespace GestorArchivos
 
         private void BORRARARTICULOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("¿Esta seguro que desea borrar el Articulo ID: " + dgv_Articulos.CurrentRow.Cells["id"].Value +
+                             " " + dgv_Articulos.CurrentRow.Cells["Descripcion"].Value + "?", "Confirmar Baja Articulo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ArticuloNegocio NegArt = new ArticuloNegocio();
+                NegArt.BorrarArt((int)dgv_Articulos.CurrentRow.Cells["id"].Value);
+            }
         }
 
         private void btn_NuevoArticulo_Click(object sender, EventArgs e)
         {
             new AMB_Articulo().Show();
+        }
+
+
+
+        private void dgv_Articulos_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            try
+            {
+
+                if (e.Button == MouseButtons.Right)
+                    {
+                        if (dgv_Articulos.SelectedRows.Count > 1)
+                        {
+                            return;
+                        }
+
+                        HitTestInfo WHit = dgv_Articulos.HitTest(e.X, e.Y);
+
+                        if(WHit.Type == DataGridViewHitTestType.Cell)
+                        {                        
+                            dgv_Articulos.CurrentCell = dgv_Articulos.Rows[WHit.RowIndex].Cells[WHit.ColumnIndex];
+                        }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
