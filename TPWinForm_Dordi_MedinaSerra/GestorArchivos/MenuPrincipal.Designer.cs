@@ -91,6 +91,7 @@ namespace GestorArchivos
             this.buscarPorCodigoToolStripMenuItem.Name = "buscarPorCodigoToolStripMenuItem";
             this.buscarPorCodigoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarPorCodigoToolStripMenuItem.Text = "Articulos";
+            this.buscarPorCodigoToolStripMenuItem.Click += new System.EventHandler(this.buscarPorCodigoToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 

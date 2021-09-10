@@ -54,15 +54,14 @@ namespace GestorArchivos.Clases
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
                     //SE CARGA LAS PROPIEDADES MARCA Y CATEGORIA COMO OBJETOS
-                    Marca AuxMarca= new Marca();
-                    AuxMarca.id = (int)lector["IdMarca"];
-                    AuxMarca.Descripcion = "";
-                    aux.Marca = AuxMarca;
+                    aux.Marca = new Marca();
+                    aux.Marca.id = (int)lector["IdMarca"];
+                    aux.Marca.Descripcion = "";
 
-                    Categoria AuxCate = new Categoria();
-                    AuxCate.id = (int)lector["IdCategoria"];
-                    AuxCate.Descripcion = "";
-                    aux.Categoria = AuxCate;                    
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.id = (int)lector["IdCategoria"];
+                    aux.Categoria.Descripcion = "";
+                    
                     //
                     aux.URLImagen = (string)lector["ImagenURL"];
                     aux.Precio = (decimal)lector["Precio"];

@@ -95,6 +95,9 @@
     <EmbeddedResource Include="AMB_Articulo.resx">
       <DependentUpon>AMB_Articulo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListadoArticulos.resx">
+      <DependentUpon>ListadoArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
