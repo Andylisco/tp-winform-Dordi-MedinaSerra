@@ -72,12 +72,6 @@
     <Compile Include="AMB_Articulo.Designer.cs">
       <DependentUpon>AMB_Articulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clases\Categoria.cs" />
-    <Compile Include="Clases\CategoriaNegocio.cs" />
-    <Compile Include="Clases\Articulo.cs" />
-    <Compile Include="Clases\ArticuloNegocio.cs" />
-    <Compile Include="Clases\Marca.cs" />
-    <Compile Include="Clases\MarcaNegocio.cs" />
     <Compile Include="ListadoArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +104,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -119,9 +114,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -134,6 +126,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{588a4d70-0de1-4b31-a619-5154db1ea793}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\negocio\negocio.csproj">
+      <Project>{2d44bb12-7bfb-436d-a8ff-de4949ad3cfb}</Project>
+      <Name>negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

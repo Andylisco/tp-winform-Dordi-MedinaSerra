@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace GestorArchivos
 {
     public partial class MenuPrincipal : Form
@@ -31,6 +32,11 @@ namespace GestorArchivos
         private void buscarPorCodigoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ListadoArticulos().Show();
+
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
 
         }
     }

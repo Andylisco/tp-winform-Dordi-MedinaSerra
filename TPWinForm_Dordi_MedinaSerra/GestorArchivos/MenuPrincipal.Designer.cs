@@ -86,7 +86,6 @@ namespace GestorArchivos
             this.aMBArticulosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.aMBArticulosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.aMBArticulosToolStripMenuItem.Text = "&Articulo";
-            
             // 
             // crearNuevoArticuloToolStripMenuItem
             // 
@@ -145,6 +144,7 @@ namespace GestorArchivos
             this.MainMenuStrip = this.mt_Menu;
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.pnl_Menu.ResumeLayout(false);
             this.pnl_Menu.PerformLayout();
             this.mt_Menu.ResumeLayout(false);
