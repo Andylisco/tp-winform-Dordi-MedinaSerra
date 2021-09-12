@@ -14,105 +14,103 @@ namespace negocio
     
     public class ArticuloNegocio
     {
-        public  List<Articulo> listar()
+        public  List<Articulo> listarArticulos()
         {
-            return  listar("");
-            
+            return  listarArticulos("");  
         }
-        public List<Articulo> listar(string Consulta)
+        public List<Articulo> listarArticulos(string Consulta)
         {
             List<Articulo> lista = new List<Articulo>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            AccesoDatos datos = new AccesoDatos();
+
 
             try
             {
-                //SE IMPLEMENTO LA RUTA DE CONECCION EN EL App.config SE LLAMA A LA MISMA USANDO CONFIGURATIONMANGER Y EL NOMBRE
-                ConnectionStringSettings Configuracion = ConfigurationManager.ConnectionStrings["CS"];
-                conexion.ConnectionString = (string)Configuracion.ConnectionString;
-                //
-                comando.CommandType = System.Data.CommandType.Text;
+                datos.setearConsulta("SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS");
+                datos.ejecutarLectura();
 
-                if (Consulta == "")
-                {
-                    comando.CommandText = "SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS"; 
-                }
-                else
-                { 
-                    comando.CommandText = Consulta;
-                }
-                
-                comando.Connection = conexion;
-
-                conexion.Open();
-                lector = comando.ExecuteReader();
-
-                while (lector.Read())
+                while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
                     //Modifique como recibimos los datos para facilitar la lectura de los mismos
-                    aux.id = (int)lector["Id"];
-                    aux.Codigo = (string)lector["Codigo"];
-                    aux.Nombre = (string)lector["Nombre"];
-                    aux.Descripcion = (string)lector["Descripcion"];
+                    aux.id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    
+                    
                     //SE CARGA LAS PROPIEDADES MARCA Y CATEGORIA COMO OBJETOS
                     aux.Marca = new Marca();
-                    aux.Marca.id = (int)lector["IdMarca"];
+                    aux.Marca.id = (int)datos.Lector["IdMarca"];
                     aux.Marca.Descripcion = "";
 
                     aux.Categoria = new Categoria();
-                    aux.Categoria.id = (int)lector["IdCategoria"];
+                    aux.Categoria.id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = "";
                     
-                    //
-                    aux.URLImagen = (string)lector["ImagenURL"];
-                    aux.Precio = (decimal)lector["Precio"];
+                   
+                    aux.URLImagen = (string)datos.Lector["ImagenURL"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
 
                     lista.Add(aux);
                 }
 
-                conexion.Close();
 
                 return lista;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
+                throw;
+            }
+            finally 
+            {
+                datos.cerrarConexion();
             }
 
+           
             
+        }
+
+        public void agregar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values( "+ nuevo.Codigo + ", '" + nuevo.Nombre + ", '" + nuevo.Descripcion + ", '" + nuevo.Marca.id + ", '" + nuevo.Categoria.id + ", '" + nuevo.URLImagen + ", '" + nuevo.Precio +")");
+                datos.ejecutarAccion();    
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
 
         public void BorrarArt(int ID)
         {
-            SqlConnection Conexion = new SqlConnection();
-            SqlCommand Comando = new SqlCommand();
-            
-            ConnectionStringSettings CS = ConfigurationManager.ConnectionStrings["CS"];
-            Conexion.ConnectionString = (string)CS.ConnectionString;
-            Comando.CommandType = System.Data.CommandType.Text;
-            Comando.CommandText = "DELETE FROM Articulos WHERE Id = " + ID + "";
-
-            Comando.Connection = Conexion;
+            AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                Conexion.Open();
-                               
-
-                if (Comando.ExecuteNonQuery() == 1)
-                    MessageBox.Show("Se elimino correctamente el registro", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Conexion.Close();
+                datos.setearConsulta("DELETE FROM Articulos WHERE Id = " + ID + "");
+                datos.ejecutarAccion();
             }
-            catch (SqlException ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ocurrio un error al querer eliminar el registro","Aviso del Sistema", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            }
-            
 
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
     }

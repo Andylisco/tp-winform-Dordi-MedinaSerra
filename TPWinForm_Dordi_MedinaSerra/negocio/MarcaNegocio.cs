@@ -17,35 +17,23 @@ namespace negocio
         public List<Marca> listar()
         {
             List<Marca> lista = new List<Marca>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            AccesoDatos datos = new AccesoDatos();
+
 
             try
             {
-                //SE IMPLEMENTO LA RUTA DE CONECCION EN EL App.config SE LLAMA A LA MISMA USANDO CONFIGURATIONMANGER Y EL NOMBRE
-                ConnectionStringSettings Configuracion = ConfigurationManager.ConnectionStrings["CS"];
-                conexion.ConnectionString = (string)Configuracion.ConnectionString;
-                //
+                datos.setearConsulta("SELECT Id,Descripcion  From MARCAS");
+                datos.ejecutarLectura();
 
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Id,Descripcion  From CATEGORIAS";
-                comando.Connection = conexion;
-
-                conexion.Open();
-                lector = comando.ExecuteReader();
-
-                while (lector.Read())
+                while (datos.Lector.Read())
                 {
                     Marca aux = new Marca();
 
-                    aux.id = (int)lector["ID"];
-                    aux.Descripcion = (string)lector["Descripcion"];
+                    aux.id = (int)datos.Lector["ID"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     lista.Add(aux);
                 }
-
-                conexion.Close();
 
                 return lista;
             }
@@ -54,6 +42,11 @@ namespace negocio
 
                 throw ex;
             }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
     }
 

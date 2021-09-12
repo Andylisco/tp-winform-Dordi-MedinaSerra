@@ -31,7 +31,7 @@ namespace GestorArchivos
         {
             this.pnl_Menu = new System.Windows.Forms.Panel();
             this.lbl_Menu = new System.Windows.Forms.Label();
-            this.mtxt_Codigo = new System.Windows.Forms.MaskedTextBox();
+            this.txt_Codigo = new System.Windows.Forms.MaskedTextBox();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,15 +74,15 @@ namespace GestorArchivos
             this.lbl_Menu.TabIndex = 0;
             this.lbl_Menu.Text = "ARTICULO";
             // 
-            // mtxt_Codigo
+            // txt_Codigo
             // 
-            this.mtxt_Codigo.Location = new System.Drawing.Point(75, 114);
-            this.mtxt_Codigo.Mask = ">L00";
-            this.mtxt_Codigo.Name = "mtxt_Codigo";
-            this.mtxt_Codigo.PromptChar = ' ';
-            this.mtxt_Codigo.Size = new System.Drawing.Size(39, 20);
-            this.mtxt_Codigo.TabIndex = 2;
-            this.mtxt_Codigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_Codigo.Location = new System.Drawing.Point(75, 114);
+            this.txt_Codigo.Mask = ">L00";
+            this.txt_Codigo.Name = "txt_Codigo";
+            this.txt_Codigo.PromptChar = ' ';
+            this.txt_Codigo.Size = new System.Drawing.Size(39, 20);
+            this.txt_Codigo.TabIndex = 2;
+            this.txt_Codigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_Nombre
             // 
@@ -152,7 +152,9 @@ namespace GestorArchivos
             this.cbx_Categoria.Location = new System.Drawing.Point(90, 195);
             this.cbx_Categoria.Name = "cbx_Categoria";
             this.cbx_Categoria.Size = new System.Drawing.Size(121, 21);
+            this.cbx_Categoria.Sorted = true;
             this.cbx_Categoria.TabIndex = 10;
+            this.cbx_Categoria.SelectedIndexChanged += new System.EventHandler(this.cbx_Categoria_SelectedIndexChanged);
             // 
             // cbx_Marca
             // 
@@ -161,6 +163,7 @@ namespace GestorArchivos
             this.cbx_Marca.Location = new System.Drawing.Point(297, 195);
             this.cbx_Marca.Name = "cbx_Marca";
             this.cbx_Marca.Size = new System.Drawing.Size(121, 21);
+            this.cbx_Marca.Sorted = true;
             this.cbx_Marca.TabIndex = 11;
             // 
             // label6
@@ -205,6 +208,7 @@ namespace GestorArchivos
             this.btn_Grabar.TabIndex = 17;
             this.btn_Grabar.Text = "GRABAR";
             this.btn_Grabar.UseVisualStyleBackColor = true;
+            this.btn_Grabar.Click += new System.EventHandler(this.btn_Grabar_Click);
             // 
             // btn_Cerrar
             // 
@@ -214,6 +218,7 @@ namespace GestorArchivos
             this.btn_Cerrar.TabIndex = 18;
             this.btn_Cerrar.Text = "CERRAR";
             this.btn_Cerrar.UseVisualStyleBackColor = true;
+            this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
             // 
             // btn_Limpiar
             // 
@@ -254,7 +259,7 @@ namespace GestorArchivos
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Nombre);
-            this.Controls.Add(this.mtxt_Codigo);
+            this.Controls.Add(this.txt_Codigo);
             this.Controls.Add(this.pnl_Menu);
             this.Location = new System.Drawing.Point(20, 20);
             this.Name = "AMB_Articulo";
@@ -272,7 +277,7 @@ namespace GestorArchivos
 
         private System.Windows.Forms.Panel pnl_Menu;
         private System.Windows.Forms.Label lbl_Menu;
-        private System.Windows.Forms.MaskedTextBox mtxt_Codigo;
+        private System.Windows.Forms.MaskedTextBox txt_Codigo;
         private System.Windows.Forms.TextBox txt_Nombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

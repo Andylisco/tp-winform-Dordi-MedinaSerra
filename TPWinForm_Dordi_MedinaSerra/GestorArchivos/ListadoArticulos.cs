@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GestorArchivos.Clases;
-using System.Linq;
 using System.Data.SqlClient;
 using System.Configuration;
 using static System.Windows.Forms.DataGridView;
+using dominio;
+using negocio;
 
 namespace GestorArchivos
 {
@@ -30,7 +30,7 @@ namespace GestorArchivos
 
             try
             {
-                lista = ArtNeg.listar();
+                lista = ArtNeg.listarArticulos();
                 LISTAGLOBAL = lista;
                 dgv_Articulos.DataSource = lista;
                         
@@ -110,7 +110,8 @@ namespace GestorArchivos
 
         private void btn_NuevoArticulo_Click(object sender, EventArgs e)
         {
-            new AMB_Articulo().Show();
+            AMB_Articulo alta = new AMB_Articulo();
+            alta.ShowDialog();
         }
 
 
