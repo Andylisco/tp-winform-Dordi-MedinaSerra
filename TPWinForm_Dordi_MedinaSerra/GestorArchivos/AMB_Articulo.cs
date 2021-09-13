@@ -158,7 +158,7 @@ namespace GestorArchivos
                 nuevo.Nombre = txt_Nombre.Text;
                 nuevo.Descripcion = txt_Descripcion.Text;
                 nuevo.Categoria = new Categoria();
-                nuevo.Categoria.id = cbx_Marca.SelectedIndex;
+                nuevo.Categoria.id = cbx_Categoria.SelectedIndex;
                 nuevo.Marca = new Marca();
                 nuevo.Marca.id = cbx_Marca.SelectedIndex;
                 nuevo.URLImagen = txt_URLImagen.Text;
