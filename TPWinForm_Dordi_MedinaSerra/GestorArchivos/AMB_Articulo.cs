@@ -41,7 +41,7 @@ namespace GestorArchivos
                 txt_Codigo.Text = ListArt[0].Codigo;
                 txt_Nombre.Text = ListArt[0].Nombre;
                 txt_Descripcion.Text = ListArt[0].Descripcion;
-                txt_Precio.Text = ListArt[0].Precio.ToString();
+                txt_Precio.Text = ListArt[0].Precio.ToString("N2");
                 cbx_Categoria.SelectedIndex = ListArt[0].Categoria.id;
                 cbx_Marca.SelectedIndex = ListArt[0].Marca.id;
                 txt_URLImagen.Text = ListArt[0].URLImagen;
@@ -162,8 +162,8 @@ namespace GestorArchivos
                 nuevo.Marca = new Marca();
                 nuevo.Marca.id = cbx_Marca.SelectedIndex;
                 nuevo.URLImagen = txt_URLImagen.Text;
-                nuevo.Precio = decimal.Parse( txt_Precio.Text);
-
+                nuevo.Precio = decimal.Parse(txt_Precio.Text.Replace(".", ","));
+                
                 if (btn_Grabar.Text == "GRABAR")
                 {
                     negocio.agregar(nuevo);
@@ -219,6 +219,11 @@ namespace GestorArchivos
             }
         }
 
+        private void txt_Precio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 46 && e.KeyChar != 08)
+                e.Handled = true;
+        }
     }
 
     

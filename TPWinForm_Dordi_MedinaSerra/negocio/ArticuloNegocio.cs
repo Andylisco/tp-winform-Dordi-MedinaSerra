@@ -86,7 +86,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values( '"+ nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Marca.id + ", " + nuevo.Categoria.id + ", '" + nuevo.URLImagen + "', '" + nuevo.Precio +"')");
+                datos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values( '"+ nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Marca.id + ", " + nuevo.Categoria.id + ", '" + nuevo.URLImagen + "', '" + nuevo.Precio.ToString().Replace(",",".") +"')");
                 datos.ejecutarAccion();    
             }
             catch (Exception)
@@ -107,7 +107,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = '" + nuevo.Codigo + "', Nombre = '" + nuevo.Codigo + "', Descripcion = '" + nuevo.Descripcion + "', IdMarca = " + nuevo.Marca.id + ", IdCategoria = " + nuevo.Categoria.id + ", ImagenUrl = '" + nuevo.URLImagen + "', Precio = '" + nuevo.Precio + "' WHERE Id = " + NroID);
+                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = '" + nuevo.Codigo + "', Nombre = '" + nuevo.Codigo + "', Descripcion = '" + nuevo.Descripcion + "', IdMarca = " + nuevo.Marca.id + ", IdCategoria = " + nuevo.Categoria.id + ", ImagenUrl = '" + nuevo.URLImagen + "', Precio = '" + nuevo.Precio.ToString().Replace(",",".") + "' WHERE Id = " + NroID);
                 datos.ejecutarAccion();
             }
             catch (Exception)

@@ -181,6 +181,7 @@ namespace GestorArchivos
             this.txt_Precio.Size = new System.Drawing.Size(100, 20);
             this.txt_Precio.TabIndex = 13;
             this.txt_Precio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Precio_KeyPress);
             // 
             // label7
             // 
