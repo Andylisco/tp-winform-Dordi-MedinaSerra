@@ -131,8 +131,10 @@ namespace GestorArchivos
                 nuevo.Codigo = txt_Codigo.Text;
                 nuevo.Nombre = txt_Nombre.Text;
                 nuevo.Descripcion = txt_Descripcion.Text;
-                nuevo.Categoria.id = (int)cbx_Marca.Items.Count;
-                nuevo.Marca.id =(int)cbx_Marca.Items.Count;
+                nuevo.Categoria = new Categoria();
+                nuevo.Categoria.id = cbx_Marca.SelectedIndex;
+                nuevo.Marca = new Marca();
+                nuevo.Marca.id = cbx_Marca.SelectedIndex;
                 nuevo.URLImagen = txt_URLImagen.Text;
                 nuevo.Precio = decimal.Parse( txt_Precio.Text);
 

@@ -78,7 +78,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values( "+ nuevo.Codigo + ", '" + nuevo.Nombre + ", '" + nuevo.Descripcion + ", '" + nuevo.Marca.id + ", '" + nuevo.Categoria.id + ", '" + nuevo.URLImagen + ", '" + nuevo.Precio +")");
+                datos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values( '"+ nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Marca.id + ", " + nuevo.Categoria.id + ", '" + nuevo.URLImagen + "', '" + nuevo.Precio +"')");
                 datos.ejecutarAccion();    
             }
             catch (Exception)
