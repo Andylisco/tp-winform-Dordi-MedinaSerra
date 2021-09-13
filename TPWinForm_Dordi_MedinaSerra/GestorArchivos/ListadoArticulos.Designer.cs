@@ -46,13 +46,13 @@ namespace GestorArchivos
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.BORRARARTICULOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pb_Seleccion_dgv = new System.Windows.Forms.PictureBox();
+            this.pbx_Seleccion_dgv = new System.Windows.Forms.PictureBox();
             this.btn_NuevoArticulo = new System.Windows.Forms.Button();
             this.btn_Cerrar = new System.Windows.Forms.Button();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Articulos)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Seleccion_dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_Seleccion_dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Menu
@@ -116,6 +116,7 @@ namespace GestorArchivos
             this.dgv_Articulos.Size = new System.Drawing.Size(775, 299);
             this.dgv_Articulos.TabIndex = 4;
             this.dgv_Articulos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_Articulos_CellMouseClick);
+            this.dgv_Articulos.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_Articulos_CellMouseDoubleClick);
             this.dgv_Articulos.SelectionChanged += new System.EventHandler(this.dgv_Articulos_SelectionChanged);
             this.dgv_Articulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_Articulos_KeyDown);
             this.dgv_Articulos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgv_Articulos_KeyPress);
@@ -206,15 +207,15 @@ namespace GestorArchivos
             this.BORRARARTICULOToolStripMenuItem.Text = "BORRAR ARTICULO";
             this.BORRARARTICULOToolStripMenuItem.Click += new System.EventHandler(this.BORRARARTICULOToolStripMenuItem_Click);
             // 
-            // pb_Seleccion_dgv
+            // pbx_Seleccion_dgv
             // 
-            this.pb_Seleccion_dgv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pb_Seleccion_dgv.Location = new System.Drawing.Point(795, 150);
-            this.pb_Seleccion_dgv.Name = "pb_Seleccion_dgv";
-            this.pb_Seleccion_dgv.Size = new System.Drawing.Size(305, 258);
-            this.pb_Seleccion_dgv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_Seleccion_dgv.TabIndex = 5;
-            this.pb_Seleccion_dgv.TabStop = false;
+            this.pbx_Seleccion_dgv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbx_Seleccion_dgv.Location = new System.Drawing.Point(795, 150);
+            this.pbx_Seleccion_dgv.Name = "pbx_Seleccion_dgv";
+            this.pbx_Seleccion_dgv.Size = new System.Drawing.Size(305, 258);
+            this.pbx_Seleccion_dgv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbx_Seleccion_dgv.TabIndex = 5;
+            this.pbx_Seleccion_dgv.TabStop = false;
             // 
             // btn_NuevoArticulo
             // 
@@ -243,7 +244,7 @@ namespace GestorArchivos
             this.ClientSize = new System.Drawing.Size(1112, 417);
             this.Controls.Add(this.btn_Cerrar);
             this.Controls.Add(this.btn_NuevoArticulo);
-            this.Controls.Add(this.pb_Seleccion_dgv);
+            this.Controls.Add(this.pbx_Seleccion_dgv);
             this.Controls.Add(this.dgv_Articulos);
             this.Controls.Add(this.txt_Filtro);
             this.Controls.Add(this.lbl_Filtrar);
@@ -254,7 +255,7 @@ namespace GestorArchivos
             this.pnl_Menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Articulos)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Seleccion_dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_Seleccion_dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,7 +268,7 @@ namespace GestorArchivos
         private System.Windows.Forms.Label lbl_Filtrar;
         private System.Windows.Forms.TextBox txt_Filtro;
         private System.Windows.Forms.DataGridView dgv_Articulos;
-        private System.Windows.Forms.PictureBox pb_Seleccion_dgv;
+        private System.Windows.Forms.PictureBox pbx_Seleccion_dgv;
         private System.Windows.Forms.Button btn_NuevoArticulo;
         private System.Windows.Forms.Button btn_Cerrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;

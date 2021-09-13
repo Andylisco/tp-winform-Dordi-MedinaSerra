@@ -16,14 +16,40 @@ namespace GestorArchivos
 {
     public partial class AMB_Articulo : Form
     {
-        public AMB_Articulo()
+        int NroID;
+        public AMB_Articulo(int Id = 0)
         {
             InitializeComponent();
+
+            if (Id != 0)
+            {
+                NroID = Id;
+            }
         }
+
 
         private void AMB_Articulo_Load(object sender, EventArgs e)
         {
             CargaCombos();
+            if (NroID != 0)
+            {
+               ArticuloNegocio ArtNeg = new ArticuloNegocio();
+                List<Articulo> ListArt;
+                
+                ListArt = ArtNeg.listarArticulos("SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio FROM ARTICULOS WHERE id = " + NroID);            
+                
+                txt_Codigo.Text = ListArt[0].Codigo;
+                txt_Nombre.Text = ListArt[0].Nombre;
+                txt_Descripcion.Text = ListArt[0].Descripcion;
+                txt_Precio.Text = ListArt[0].Precio.ToString();
+                cbx_Categoria.SelectedIndex = ListArt[0].Categoria.id;
+                cbx_Marca.SelectedIndex = ListArt[0].Marca.id;
+                txt_URLImagen.Text = ListArt[0].URLImagen;
+
+                CargarImagen();
+
+                btn_Grabar.Text = "ACTUALIZAR DATOS";
+            }
         }
 
        private void CargaCombos()
@@ -138,8 +164,17 @@ namespace GestorArchivos
                 nuevo.URLImagen = txt_URLImagen.Text;
                 nuevo.Precio = decimal.Parse( txt_Precio.Text);
 
-                negocio.agregar(nuevo);
-                MessageBox.Show("Agregado exitosamente");
+                if (btn_Grabar.Text == "GRABAR")
+                {
+                    negocio.agregar(nuevo);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+                else
+                {
+                    negocio.Actualizar(NroID,nuevo);
+                    MessageBox.Show("Actualizados los datos exitosamente");
+                }
+                
                 Close();
     }           
             catch (Exception ex)
@@ -149,12 +184,44 @@ namespace GestorArchivos
             }
         }
 
-        private void cbx_Categoria_SelectedIndexChanged(object sender, EventArgs e)
+        private void txt_URLImagen_KeyDown(object sender, KeyEventArgs e)
         {
-             
+            switch (e.KeyData)
+            {
+                case Keys.Enter: 
+                    { 
+                    CargarImagen();
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        txt_URLImagen.Text = "";
+                        break;
+                    }
+                
+            }                            
         }
 
+        private void CargarImagen()
+        {
+            if (txt_URLImagen.Text != "")
+            {
+                try
+                {
+                    pbx_ImagenArticulo.Load(txt_URLImagen.Text);
+                }
+                catch (Exception)
+                {
 
+                    pbx_ImagenArticulo.Load("https://847395.smushcdn.com/1790738/wp-content/uploads/2015/09/imagen-no-encontrada.jpg?lossy=0&strip=1&webp=1");
+                }
+                
+            }
+        }
 
     }
+
+    
+
 }
+

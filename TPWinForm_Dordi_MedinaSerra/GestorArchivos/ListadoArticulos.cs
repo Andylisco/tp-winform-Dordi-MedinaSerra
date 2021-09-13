@@ -75,11 +75,11 @@ namespace GestorArchivos
         {
             try
             {
-                pb_Seleccion_dgv.Load(imagen);
+                pbx_Seleccion_dgv.Load(imagen);
             }
             catch (Exception ex)
             {
-                pb_Seleccion_dgv.Load("https://847395.smushcdn.com/1790738/wp-content/uploads/2015/09/imagen-no-encontrada.jpg?lossy=0&strip=1&webp=1");
+                pbx_Seleccion_dgv.Load("https://847395.smushcdn.com/1790738/wp-content/uploads/2015/09/imagen-no-encontrada.jpg?lossy=0&strip=1&webp=1");
             }
         }
 
@@ -140,6 +140,14 @@ namespace GestorArchivos
             {
 
                 throw;
+            }
+        }
+
+        private void dgv_Articulos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex != -1)
+            {
+                new AMB_Articulo((int)dgv_Articulos.CurrentRow.Cells["ID"].Value).ShowDialog();
             }
         }
     }

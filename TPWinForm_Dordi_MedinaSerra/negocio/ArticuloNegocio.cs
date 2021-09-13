@@ -26,7 +26,15 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS");
+                if (Consulta == "")
+                {
+                    datos.setearConsulta("SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS");
+                }
+                else 
+                {
+                    datos.setearConsulta(Consulta);
+                }
+                
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -91,6 +99,26 @@ namespace negocio
                 datos.cerrarConexion();
             }
 
+        }
+
+        public void Actualizar(int NroID, Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = '" + nuevo.Codigo + "', Nombre = '" + nuevo.Codigo + "', Descripcion = '" + nuevo.Descripcion + "', IdMarca = " + nuevo.Marca.id + ", IdCategoria = " + nuevo.Categoria.id + ", ImagenUrl = '" + nuevo.URLImagen + "', Precio = '" + nuevo.Precio + "' WHERE Id = " + NroID);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
         public void BorrarArt(int ID)

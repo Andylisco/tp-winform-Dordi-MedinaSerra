@@ -48,9 +48,9 @@ namespace GestorArchivos
             this.btn_Grabar = new System.Windows.Forms.Button();
             this.btn_Cerrar = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
-            this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.pbx_ImagenArticulo = new System.Windows.Forms.PictureBox();
             this.pnl_Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_ImagenArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Menu
@@ -154,7 +154,6 @@ namespace GestorArchivos
             this.cbx_Categoria.Size = new System.Drawing.Size(121, 21);
             this.cbx_Categoria.Sorted = true;
             this.cbx_Categoria.TabIndex = 10;
-            this.cbx_Categoria.SelectedIndexChanged += new System.EventHandler(this.cbx_Categoria_SelectedIndexChanged);
             // 
             // cbx_Marca
             // 
@@ -199,10 +198,11 @@ namespace GestorArchivos
             this.txt_URLImagen.Name = "txt_URLImagen";
             this.txt_URLImagen.Size = new System.Drawing.Size(531, 20);
             this.txt_URLImagen.TabIndex = 16;
+            this.txt_URLImagen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_URLImagen_KeyDown);
             // 
             // btn_Grabar
             // 
-            this.btn_Grabar.Location = new System.Drawing.Point(32, 269);
+            this.btn_Grabar.Location = new System.Drawing.Point(50, 281);
             this.btn_Grabar.Name = "btn_Grabar";
             this.btn_Grabar.Size = new System.Drawing.Size(118, 67);
             this.btn_Grabar.TabIndex = 17;
@@ -212,7 +212,7 @@ namespace GestorArchivos
             // 
             // btn_Cerrar
             // 
-            this.btn_Cerrar.Location = new System.Drawing.Point(32, 401);
+            this.btn_Cerrar.Location = new System.Drawing.Point(125, 377);
             this.btn_Cerrar.Name = "btn_Cerrar";
             this.btn_Cerrar.Size = new System.Drawing.Size(118, 67);
             this.btn_Cerrar.TabIndex = 18;
@@ -222,27 +222,28 @@ namespace GestorArchivos
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(32, 335);
+            this.btn_Limpiar.Location = new System.Drawing.Point(197, 281);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(118, 67);
             this.btn_Limpiar.TabIndex = 19;
             this.btn_Limpiar.Text = "LIMPIAR PANTALLA";
             this.btn_Limpiar.UseVisualStyleBackColor = true;
             // 
-            // dgvArticulos
+            // pbx_ImagenArticulo
             // 
-            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(182, 269);
-            this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.Size = new System.Drawing.Size(464, 199);
-            this.dgvArticulos.TabIndex = 20;
+            this.pbx_ImagenArticulo.Location = new System.Drawing.Point(350, 257);
+            this.pbx_ImagenArticulo.Name = "pbx_ImagenArticulo";
+            this.pbx_ImagenArticulo.Size = new System.Drawing.Size(279, 234);
+            this.pbx_ImagenArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbx_ImagenArticulo.TabIndex = 20;
+            this.pbx_ImagenArticulo.TabStop = false;
             // 
             // AMB_Articulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 515);
-            this.Controls.Add(this.dgvArticulos);
+            this.Controls.Add(this.pbx_ImagenArticulo);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.btn_Cerrar);
             this.Controls.Add(this.btn_Grabar);
@@ -267,7 +268,7 @@ namespace GestorArchivos
             this.Load += new System.EventHandler(this.AMB_Articulo_Load);
             this.pnl_Menu.ResumeLayout(false);
             this.pnl_Menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_ImagenArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,6 +295,6 @@ namespace GestorArchivos
         private System.Windows.Forms.Button btn_Grabar;
         private System.Windows.Forms.Button btn_Cerrar;
         private System.Windows.Forms.Button btn_Limpiar;
-        private System.Windows.Forms.DataGridView dgvArticulos;
+        private System.Windows.Forms.PictureBox pbx_ImagenArticulo;
     }
 }
