@@ -25,6 +25,11 @@ namespace GestorArchivos
 
         private void ListadoArticulos_Load(object sender, EventArgs e)
         {
+            CargarGrilla();
+        }
+        
+        private void CargarGrilla()
+        {
             List<Articulo> lista = new List<Articulo>();
             ArticuloNegocio ArtNeg = new ArticuloNegocio();
 
@@ -33,15 +38,15 @@ namespace GestorArchivos
                 lista = ArtNeg.listarArticulos();
                 LISTAGLOBAL = lista;
                 dgv_Articulos.DataSource = lista;
+
+                txt_Filtro.Text = "";
                         
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show("Error al cargar datos en la grilla", "Conexion Articulos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
 
         private void txt_Filtro_KeyUp(object sender, KeyEventArgs e)
         {
@@ -112,6 +117,7 @@ namespace GestorArchivos
         {
             AMB_Articulo alta = new AMB_Articulo();
             alta.ShowDialog();
+            CargarGrilla();
         }
 
 

@@ -31,20 +31,24 @@ namespace GestorArchivos
         private void AMB_Articulo_Load(object sender, EventArgs e)
         {
             CargaCombos();
+
             if (NroID != 0)
             {
                ArticuloNegocio ArtNeg = new ArticuloNegocio();
-                List<Articulo> ListArt;
+                Articulo Art;
                 
-                ListArt = ArtNeg.listarArticulos("SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio FROM ARTICULOS WHERE id = " + NroID);            
+                Art = ArtNeg.listar(NroID);
+                                
                 
-                txt_Codigo.Text = ListArt[0].Codigo;
-                txt_Nombre.Text = ListArt[0].Nombre;
-                txt_Descripcion.Text = ListArt[0].Descripcion;
-                txt_Precio.Text = ListArt[0].Precio.ToString("N2");
-                cbx_Categoria.SelectedIndex = ListArt[0].Categoria.id;
-                cbx_Marca.SelectedIndex = ListArt[0].Marca.id;
-                txt_URLImagen.Text = ListArt[0].URLImagen;
+                txt_Codigo.Text = Art.Codigo;
+                txt_Nombre.Text = Art.Nombre;
+                txt_Descripcion.Text = Art.Descripcion;
+                txt_Precio.Text = Art.Precio.ToString("N2");
+                Categoria Cat = new Categoria();
+                Cat.id = Art.Categoria.id;
+                cbx_Categoria.SelectedItem = Cat;
+                cbx_Marca.SelectedItem = Art.Marca;
+                txt_URLImagen.Text = Art.URLImagen;
 
                 CargarImagen();
 
@@ -61,15 +65,13 @@ namespace GestorArchivos
 
         private void CargaCategorias()
         {
+            CategoriaNegocio CatNeg = new CategoriaNegocio();
             try
             {
-                CategoriaNegocio CatNeg = new CategoriaNegocio();
-                cbx_Categoria.Items.Add("");
+                cbx_Categoria.DataSource = CatNeg.listar();
+                cbx_Categoria.DisplayMember = "Descripcion";
+                
 
-                foreach (Categoria Cate in CatNeg.listar())
-                {
-                    cbx_Categoria.Items.Add(Cate.Descripcion);
-                }
             }
             catch (Exception)
             {
@@ -77,61 +79,15 @@ namespace GestorArchivos
             }
                   
         }
-       
-        private int idCategoria()
-        {
-            int a = new int();         
-            try
-            {
-                
-                CategoriaNegocio CatNeg = new CategoriaNegocio();
-                
-                foreach (Categoria Cate in CatNeg.listar())
-                {
-                    if (cbx_Categoria.SelectedText == Cate.Descripcion) a = Cate.id; 
-                }
-
-                return a;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        private int idMarca()
-        {
-            int a = new int();
-            try
-            {
-                CategoriaNegocio MarNeg = new CategoriaNegocio();
-            
-                foreach (Categoria Mar in MarNeg.listar())
-                {
-                    if (cbx_Categoria.SelectedText == Mar.Descripcion) a = Mar.id;
-                    
-                }
-
-                
-                return a;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
         
         private void CargaMarcas()
         {
             try
             {
                 MarcaNegocio MarcaNeg = new MarcaNegocio();
-                cbx_Marca.Items.Add("");
+                cbx_Marca.DataSource = MarcaNeg.listar();
+                cbx_Marca.DisplayMember = "Descripcion";
 
-                foreach (Marca Mar in MarcaNeg.listar())
-                {
-                    cbx_Marca.Items.Add(Mar.Descripcion);
-                }
             }
             catch (Exception)
             {
@@ -157,10 +113,8 @@ namespace GestorArchivos
                 nuevo.Codigo = txt_Codigo.Text;
                 nuevo.Nombre = txt_Nombre.Text;
                 nuevo.Descripcion = txt_Descripcion.Text;
-                nuevo.Categoria = new Categoria();
-                nuevo.Categoria.id = cbx_Categoria.SelectedIndex;
-                nuevo.Marca = new Marca();
-                nuevo.Marca.id = cbx_Marca.SelectedIndex;
+                nuevo.Categoria = (Categoria)cbx_Categoria.SelectedItem;
+                nuevo.Marca = (Marca)cbx_Marca.SelectedItem;
                 nuevo.URLImagen = txt_URLImagen.Text;
                 nuevo.Precio = decimal.Parse(txt_Precio.Text.Replace(".", ","));
                 
@@ -173,6 +127,7 @@ namespace GestorArchivos
                 {
                     negocio.Actualizar(NroID,nuevo);
                     MessageBox.Show("Actualizados los datos exitosamente");
+                    
                 }
                 
                 Close();
@@ -201,14 +156,19 @@ namespace GestorArchivos
                 
             }                            
         }
-
+        private void txt_URLImagen_Leave(object sender, EventArgs e)
+        {
+            CargarImagen();
+        }
         private void CargarImagen()
         {
             if (txt_URLImagen.Text != "")
             {
                 try
                 {
+                   
                     pbx_ImagenArticulo.Load(txt_URLImagen.Text);
+                    
                 }
                 catch (Exception)
                 {
@@ -224,6 +184,8 @@ namespace GestorArchivos
             if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 46 && e.KeyChar != 08)
                 e.Handled = true;
         }
+
+        
     }
 
     

@@ -61,6 +61,11 @@ namespace negocio
 
         }
 
+        public void setearParametros(string Nombre, Object Valor)
+        {
+            comando.Parameters.AddWithValue(Nombre,Valor);
+        }
+
         public void cerrarConexion()
         {
             if (lector != null)

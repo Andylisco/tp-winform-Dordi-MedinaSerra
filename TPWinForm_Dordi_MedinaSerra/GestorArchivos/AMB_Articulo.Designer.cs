@@ -39,8 +39,6 @@ namespace GestorArchivos
             this.txt_Descripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbx_Categoria = new System.Windows.Forms.ComboBox();
-            this.cbx_Marca = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_Precio = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -49,6 +47,8 @@ namespace GestorArchivos
             this.btn_Cerrar = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
             this.pbx_ImagenArticulo = new System.Windows.Forms.PictureBox();
+            this.cbx_Categoria = new System.Windows.Forms.ComboBox();
+            this.cbx_Marca = new System.Windows.Forms.ComboBox();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_ImagenArticulo)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +81,7 @@ namespace GestorArchivos
             this.txt_Codigo.Name = "txt_Codigo";
             this.txt_Codigo.PromptChar = ' ';
             this.txt_Codigo.Size = new System.Drawing.Size(39, 20);
-            this.txt_Codigo.TabIndex = 2;
+            this.txt_Codigo.TabIndex = 0;
             this.txt_Codigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_Nombre
@@ -90,7 +90,7 @@ namespace GestorArchivos
             this.txt_Nombre.MaxLength = 50;
             this.txt_Nombre.Name = "txt_Nombre";
             this.txt_Nombre.Size = new System.Drawing.Size(416, 20);
-            this.txt_Nombre.TabIndex = 3;
+            this.txt_Nombre.TabIndex = 1;
             // 
             // label1
             // 
@@ -125,7 +125,7 @@ namespace GestorArchivos
             this.txt_Descripcion.MaxLength = 50;
             this.txt_Descripcion.Name = "txt_Descripcion";
             this.txt_Descripcion.Size = new System.Drawing.Size(531, 20);
-            this.txt_Descripcion.TabIndex = 7;
+            this.txt_Descripcion.TabIndex = 2;
             // 
             // label4
             // 
@@ -145,26 +145,6 @@ namespace GestorArchivos
             this.label5.TabIndex = 9;
             this.label5.Text = "Marca";
             // 
-            // cbx_Categoria
-            // 
-            this.cbx_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_Categoria.FormattingEnabled = true;
-            this.cbx_Categoria.Location = new System.Drawing.Point(90, 195);
-            this.cbx_Categoria.Name = "cbx_Categoria";
-            this.cbx_Categoria.Size = new System.Drawing.Size(121, 21);
-            this.cbx_Categoria.Sorted = true;
-            this.cbx_Categoria.TabIndex = 10;
-            // 
-            // cbx_Marca
-            // 
-            this.cbx_Marca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_Marca.FormattingEnabled = true;
-            this.cbx_Marca.Location = new System.Drawing.Point(297, 195);
-            this.cbx_Marca.Name = "cbx_Marca";
-            this.cbx_Marca.Size = new System.Drawing.Size(121, 21);
-            this.cbx_Marca.Sorted = true;
-            this.cbx_Marca.TabIndex = 11;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -177,9 +157,10 @@ namespace GestorArchivos
             // txt_Precio
             // 
             this.txt_Precio.Location = new System.Drawing.Point(482, 195);
+            this.txt_Precio.MaxLength = 40;
             this.txt_Precio.Name = "txt_Precio";
             this.txt_Precio.Size = new System.Drawing.Size(100, 20);
-            this.txt_Precio.TabIndex = 13;
+            this.txt_Precio.TabIndex = 5;
             this.txt_Precio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Precio_KeyPress);
             // 
@@ -198,15 +179,16 @@ namespace GestorArchivos
             this.txt_URLImagen.MaxLength = 50;
             this.txt_URLImagen.Name = "txt_URLImagen";
             this.txt_URLImagen.Size = new System.Drawing.Size(531, 20);
-            this.txt_URLImagen.TabIndex = 16;
+            this.txt_URLImagen.TabIndex = 6;
             this.txt_URLImagen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_URLImagen_KeyDown);
+            this.txt_URLImagen.Leave += new System.EventHandler(this.txt_URLImagen_Leave);
             // 
             // btn_Grabar
             // 
             this.btn_Grabar.Location = new System.Drawing.Point(50, 281);
             this.btn_Grabar.Name = "btn_Grabar";
             this.btn_Grabar.Size = new System.Drawing.Size(118, 67);
-            this.btn_Grabar.TabIndex = 17;
+            this.btn_Grabar.TabIndex = 7;
             this.btn_Grabar.Text = "GRABAR";
             this.btn_Grabar.UseVisualStyleBackColor = true;
             this.btn_Grabar.Click += new System.EventHandler(this.btn_Grabar_Click);
@@ -216,7 +198,7 @@ namespace GestorArchivos
             this.btn_Cerrar.Location = new System.Drawing.Point(125, 377);
             this.btn_Cerrar.Name = "btn_Cerrar";
             this.btn_Cerrar.Size = new System.Drawing.Size(118, 67);
-            this.btn_Cerrar.TabIndex = 18;
+            this.btn_Cerrar.TabIndex = 8;
             this.btn_Cerrar.Text = "CERRAR";
             this.btn_Cerrar.UseVisualStyleBackColor = true;
             this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
@@ -226,7 +208,7 @@ namespace GestorArchivos
             this.btn_Limpiar.Location = new System.Drawing.Point(197, 281);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(118, 67);
-            this.btn_Limpiar.TabIndex = 19;
+            this.btn_Limpiar.TabIndex = 9;
             this.btn_Limpiar.Text = "LIMPIAR PANTALLA";
             this.btn_Limpiar.UseVisualStyleBackColor = true;
             // 
@@ -239,11 +221,31 @@ namespace GestorArchivos
             this.pbx_ImagenArticulo.TabIndex = 20;
             this.pbx_ImagenArticulo.TabStop = false;
             // 
+            // cbx_Categoria
+            // 
+            this.cbx_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_Categoria.FormattingEnabled = true;
+            this.cbx_Categoria.Location = new System.Drawing.Point(98, 195);
+            this.cbx_Categoria.Name = "cbx_Categoria";
+            this.cbx_Categoria.Size = new System.Drawing.Size(121, 21);
+            this.cbx_Categoria.TabIndex = 3;
+            // 
+            // cbx_Marca
+            // 
+            this.cbx_Marca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_Marca.FormattingEnabled = true;
+            this.cbx_Marca.Location = new System.Drawing.Point(297, 195);
+            this.cbx_Marca.Name = "cbx_Marca";
+            this.cbx_Marca.Size = new System.Drawing.Size(121, 21);
+            this.cbx_Marca.TabIndex = 4;
+            // 
             // AMB_Articulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 515);
+            this.Controls.Add(this.cbx_Marca);
+            this.Controls.Add(this.cbx_Categoria);
             this.Controls.Add(this.pbx_ImagenArticulo);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.btn_Cerrar);
@@ -252,8 +254,6 @@ namespace GestorArchivos
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txt_Precio);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.cbx_Marca);
-            this.Controls.Add(this.cbx_Categoria);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_Descripcion);
@@ -287,8 +287,6 @@ namespace GestorArchivos
         private System.Windows.Forms.TextBox txt_Descripcion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbx_Categoria;
-        private System.Windows.Forms.ComboBox cbx_Marca;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_Precio;
         private System.Windows.Forms.Label label7;
@@ -297,5 +295,7 @@ namespace GestorArchivos
         private System.Windows.Forms.Button btn_Cerrar;
         private System.Windows.Forms.Button btn_Limpiar;
         private System.Windows.Forms.PictureBox pbx_ImagenArticulo;
+        private System.Windows.Forms.ComboBox cbx_Categoria;
+        private System.Windows.Forms.ComboBox cbx_Marca;
     }
 }

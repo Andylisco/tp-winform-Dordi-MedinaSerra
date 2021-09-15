@@ -36,11 +36,6 @@ namespace GestorArchivos
             this.lbl_Filtrar = new System.Windows.Forms.Label();
             this.txt_Filtro = new System.Windows.Forms.TextBox();
             this.dgv_Articulos = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.BORRARARTICULOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbx_Seleccion_dgv = new System.Windows.Forms.PictureBox();
-            this.btn_NuevoArticulo = new System.Windows.Forms.Button();
-            this.btn_Cerrar = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +44,11 @@ namespace GestorArchivos
             this.IdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrlImagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.BORRARARTICULOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbx_Seleccion_dgv = new System.Windows.Forms.PictureBox();
+            this.btn_NuevoArticulo = new System.Windows.Forms.Button();
+            this.btn_Cerrar = new System.Windows.Forms.Button();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Articulos)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -111,6 +111,7 @@ namespace GestorArchivos
             this.Precio});
             this.dgv_Articulos.ContextMenuStrip = this.contextMenuStrip1;
             this.dgv_Articulos.Location = new System.Drawing.Point(13, 109);
+            this.dgv_Articulos.MultiSelect = false;
             this.dgv_Articulos.Name = "dgv_Articulos";
             this.dgv_Articulos.ReadOnly = true;
             this.dgv_Articulos.Size = new System.Drawing.Size(775, 299);
@@ -121,50 +122,6 @@ namespace GestorArchivos
             this.dgv_Articulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_Articulos_KeyDown);
             this.dgv_Articulos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgv_Articulos_KeyPress);
             this.dgv_Articulos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgv_Articulos_MouseDown_1);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BORRARARTICULOToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(177, 26);
-            // 
-            // BORRARARTICULOToolStripMenuItem
-            // 
-            this.BORRARARTICULOToolStripMenuItem.Name = "BORRARARTICULOToolStripMenuItem";
-            this.BORRARARTICULOToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.BORRARARTICULOToolStripMenuItem.Text = "BORRAR ARTICULO";
-            this.BORRARARTICULOToolStripMenuItem.Click += new System.EventHandler(this.BORRARARTICULOToolStripMenuItem_Click);
-            // 
-            // pbx_Seleccion_dgv
-            // 
-            this.pbx_Seleccion_dgv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbx_Seleccion_dgv.Location = new System.Drawing.Point(795, 150);
-            this.pbx_Seleccion_dgv.Name = "pbx_Seleccion_dgv";
-            this.pbx_Seleccion_dgv.Size = new System.Drawing.Size(305, 258);
-            this.pbx_Seleccion_dgv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbx_Seleccion_dgv.TabIndex = 5;
-            this.pbx_Seleccion_dgv.TabStop = false;
-            // 
-            // btn_NuevoArticulo
-            // 
-            this.btn_NuevoArticulo.Location = new System.Drawing.Point(808, 73);
-            this.btn_NuevoArticulo.Name = "btn_NuevoArticulo";
-            this.btn_NuevoArticulo.Size = new System.Drawing.Size(129, 61);
-            this.btn_NuevoArticulo.TabIndex = 6;
-            this.btn_NuevoArticulo.Text = "NUEVO ARTICULO";
-            this.btn_NuevoArticulo.UseVisualStyleBackColor = true;
-            this.btn_NuevoArticulo.Click += new System.EventHandler(this.btn_NuevoArticulo_Click);
-            // 
-            // btn_Cerrar
-            // 
-            this.btn_Cerrar.Location = new System.Drawing.Point(958, 73);
-            this.btn_Cerrar.Name = "btn_Cerrar";
-            this.btn_Cerrar.Size = new System.Drawing.Size(129, 61);
-            this.btn_Cerrar.TabIndex = 7;
-            this.btn_Cerrar.Text = "CERRAR";
-            this.btn_Cerrar.UseVisualStyleBackColor = true;
-            this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
             // 
             // Id
             // 
@@ -235,6 +192,50 @@ namespace GestorArchivos
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
             this.Precio.Width = 62;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BORRARARTICULOToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(177, 26);
+            // 
+            // BORRARARTICULOToolStripMenuItem
+            // 
+            this.BORRARARTICULOToolStripMenuItem.Name = "BORRARARTICULOToolStripMenuItem";
+            this.BORRARARTICULOToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.BORRARARTICULOToolStripMenuItem.Text = "BORRAR ARTICULO";
+            this.BORRARARTICULOToolStripMenuItem.Click += new System.EventHandler(this.BORRARARTICULOToolStripMenuItem_Click);
+            // 
+            // pbx_Seleccion_dgv
+            // 
+            this.pbx_Seleccion_dgv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbx_Seleccion_dgv.Location = new System.Drawing.Point(795, 150);
+            this.pbx_Seleccion_dgv.Name = "pbx_Seleccion_dgv";
+            this.pbx_Seleccion_dgv.Size = new System.Drawing.Size(305, 258);
+            this.pbx_Seleccion_dgv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbx_Seleccion_dgv.TabIndex = 5;
+            this.pbx_Seleccion_dgv.TabStop = false;
+            // 
+            // btn_NuevoArticulo
+            // 
+            this.btn_NuevoArticulo.Location = new System.Drawing.Point(808, 73);
+            this.btn_NuevoArticulo.Name = "btn_NuevoArticulo";
+            this.btn_NuevoArticulo.Size = new System.Drawing.Size(129, 61);
+            this.btn_NuevoArticulo.TabIndex = 6;
+            this.btn_NuevoArticulo.Text = "NUEVO ARTICULO";
+            this.btn_NuevoArticulo.UseVisualStyleBackColor = true;
+            this.btn_NuevoArticulo.Click += new System.EventHandler(this.btn_NuevoArticulo_Click);
+            // 
+            // btn_Cerrar
+            // 
+            this.btn_Cerrar.Location = new System.Drawing.Point(958, 73);
+            this.btn_Cerrar.Name = "btn_Cerrar";
+            this.btn_Cerrar.Size = new System.Drawing.Size(129, 61);
+            this.btn_Cerrar.TabIndex = 7;
+            this.btn_Cerrar.Text = "CERRAR";
+            this.btn_Cerrar.UseVisualStyleBackColor = true;
+            this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
             // 
             // ListadoArticulos
             // 

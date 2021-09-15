@@ -14,11 +14,47 @@ namespace negocio
     
     public class ArticuloNegocio
     {
-        public  List<Articulo> listarArticulos()
+        public Articulo listar(int NroID)
         {
-            return  listarArticulos("");  
+            AccesoDatos Datos = new AccesoDatos();
+
+            Datos.setearConsulta("SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio FROM ARTICULOS WHERE id = @ID");
+            Datos.setearParametros("@ID", NroID);
+
+            Datos.ejecutarLectura();
+
+            Articulo Art = new Articulo();
+
+            while (Datos.Lector.Read())
+            {
+                Art.id = (int)Datos.Lector["Id"];
+                if(!(Datos.Lector["Codigo"] is DBNull))
+                Art.Codigo = (string)Datos.Lector["Codigo"];
+                if (!(Datos.Lector["Nombre"] is DBNull))
+                    Art.Nombre = (string)Datos.Lector["Nombre"];
+                if (!(Datos.Lector["Descripcion"] is DBNull))
+                    Art.Descripcion = (string)Datos.Lector["Descripcion"];
+
+                Art.Marca = new Marca();
+                if (!(Datos.Lector["IdMarca"] is DBNull))
+                    Art.Marca.id = (int)Datos.Lector["IdMarca"];
+               
+                Art.Categoria = new Categoria();
+                if (!(Datos.Lector["IdCategoria"] is DBNull))
+                    Art.Categoria.id = (int)Datos.Lector["IdCategoria"];
+                Art.Categoria.Descripcion = "";
+
+                if (!(Datos.Lector["ImagenURL"] is DBNull))
+                    Art.URLImagen = (string)Datos.Lector["ImagenURL"];
+                if (!(Datos.Lector["Precio"] is DBNull))
+                    Art.Precio = (decimal)Datos.Lector["Precio"];
+            }   
+
+           
+
+            return Art;
         }
-        public List<Articulo> listarArticulos(string Consulta)
+        public List<Articulo> listarArticulos()
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
@@ -26,15 +62,9 @@ namespace negocio
 
             try
             {
-                if (Consulta == "")
-                {
-                    datos.setearConsulta("SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS");
-                }
-                else 
-                {
-                    datos.setearConsulta(Consulta);
-                }
-                
+
+                datos.setearConsulta("SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS");
+               
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -84,41 +114,42 @@ namespace negocio
         {
             AccesoDatos datos = new AccesoDatos();
 
-            try
-            {
-                datos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values( '"+ nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Marca.id + ", " + nuevo.Categoria.id + ", '" + nuevo.URLImagen + "', '" + nuevo.Precio.ToString().Replace(",",".") +"')");
-                datos.ejecutarAccion();    
-            }
-            catch (Exception)
-            {
+            datos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)" +
+                                "values( @Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @URLimagen, @Precio)");
 
-                throw;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
+            datos.setearParametros("@Codigo", nuevo.Codigo );
+            datos.setearParametros("@Nombre", nuevo.Nombre );
+            datos.setearParametros("@Descripcion", nuevo.Descripcion);
+            datos.setearParametros("@IdMarca", nuevo.Marca.id );
+            datos.setearParametros("@IdCategoria", nuevo.Categoria.id );
+            datos.setearParametros("@URLimagen", nuevo.URLImagen );
+            datos.setearParametros("@Precio", nuevo.Precio.ToString().Replace(",","."));
+            datos.ejecutarAccion();    
+            
+            datos.cerrarConexion();
+            
         }
 
         public void Actualizar(int NroID, Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
-            try
-            {
-                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = '" + nuevo.Codigo + "', Nombre = '" + nuevo.Codigo + "', Descripcion = '" + nuevo.Descripcion + "', IdMarca = " + nuevo.Marca.id + ", IdCategoria = " + nuevo.Categoria.id + ", ImagenUrl = '" + nuevo.URLImagen + "', Precio = '" + nuevo.Precio.ToString().Replace(",",".") + "' WHERE Id = " + NroID);
-                datos.ejecutarAccion();
-            }
-            catch (Exception)
-            {
+        
+                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, " +
+                    "IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @URLimagen, Precio = @Precio WHERE Id = @ID");
 
-                throw;
-            }
-            finally
-            {
+                datos.setearParametros("@Codigo",nuevo.Codigo);
+                datos.setearParametros("@Nombre",nuevo.Nombre);
+                datos.setearParametros("@Descripcion",nuevo.Descripcion);
+                datos.setearParametros("@IdMarca",nuevo.Marca.id);
+                datos.setearParametros("@IdCategoria",nuevo.Categoria.id);
+                datos.setearParametros("@URLimagen", nuevo.URLImagen);
+                datos.setearParametros("@Precio",nuevo.Precio.ToString().Replace(",", "."));
+                datos.setearParametros("@ID",NroID);
+                datos.ejecutarAccion();
+            
                 datos.cerrarConexion();
-            }
+            
         }
 
         public void BorrarArt(int ID)
