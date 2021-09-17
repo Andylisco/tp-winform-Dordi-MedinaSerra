@@ -129,7 +129,7 @@ namespace negocio
             datos.setearParametros("@IdMarca", nuevo.Marca.id );
             datos.setearParametros("@IdCategoria", nuevo.Categoria.id );
             datos.setearParametros("@URLimagen", nuevo.URLImagen );
-            datos.setearParametros("@Precio", nuevo.Precio.ToString().Replace(",","."));
+            datos.setearParametros("@Precio", nuevo.Precio);
             datos.ejecutarAccion();    
             
             datos.cerrarConexion();
@@ -150,7 +150,7 @@ namespace negocio
                 datos.setearParametros("@IdMarca",nuevo.Marca.id);
                 datos.setearParametros("@IdCategoria",nuevo.Categoria.id);
                 datos.setearParametros("@URLimagen", nuevo.URLImagen);
-                datos.setearParametros("@Precio",nuevo.Precio.ToString().Replace(",", "."));
+                datos.setearParametros("@Precio", nuevo.Precio);
                 datos.setearParametros("@ID",nuevo.id );
                 datos.ejecutarAccion();
             

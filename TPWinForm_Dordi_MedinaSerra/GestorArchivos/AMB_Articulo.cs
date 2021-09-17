@@ -134,7 +134,7 @@ namespace GestorArchivos
                 articulo.Categoria = (Categoria)cbx_Categoria.SelectedItem;
                 articulo.Marca = (Marca)cbx_Marca.SelectedItem;
                 articulo.URLImagen = txt_URLImagen.Text;
-                articulo.Precio = decimal.Parse(txt_Precio.Text.Replace(".", ","));
+                articulo.Precio = decimal.Parse(txt_Precio.Text);
 
                 if (articulo.id != 0)
                 {
@@ -199,7 +199,7 @@ namespace GestorArchivos
 
         private void txt_Precio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 46 && e.KeyChar != 08)
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 44 && e.KeyChar != 08)
                 e.Handled = true;
         }
 
