@@ -16,6 +16,9 @@ namespace GestorArchivos
 {
     public partial class AMB_Articulo : Form
     {
+
+        private Articulo articulo = null;
+
         int NroID;
         public AMB_Articulo(int Id = 0)
         {
@@ -26,33 +29,40 @@ namespace GestorArchivos
                 NroID = Id;
             }
         }
+        public AMB_Articulo(Articulo articulo,int Id = 0)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
+            if (Id != 0)
+            {
+                NroID = articulo.id;
+            }
+        }
 
 
         private void AMB_Articulo_Load(object sender, EventArgs e)
         {
             CargaCombos();
 
-            if (NroID != 0)
+            if (articulo != null)
             {
-               ArticuloNegocio ArtNeg = new ArticuloNegocio();
-                Articulo Art;
-                
-                Art = ArtNeg.listar(NroID);
-                                
-                
-                txt_Codigo.Text = Art.Codigo;
-                txt_Nombre.Text = Art.Nombre;
-                txt_Descripcion.Text = Art.Descripcion;
-                txt_Precio.Text = Art.Precio.ToString("N2");
-                Categoria Cat = new Categoria();
-                Cat.id = Art.Categoria.id;
-                cbx_Categoria.SelectedItem = Cat;
-                cbx_Marca.SelectedItem = Art.Marca;
-                txt_URLImagen.Text = Art.URLImagen;
+                          
+                    txt_Codigo.Text = articulo.Codigo;
+                    txt_Nombre.Text = articulo.Nombre;
+                    txt_Descripcion.Text = articulo.Descripcion;
+                    txt_Precio.Text = articulo.Precio.ToString("N2");
+                    Categoria Cat = new Categoria();
+                    Cat.id = articulo.Categoria.id;
+                   // cbx_Categoria.SelectedItem = Cat;
+                   // cbx_Marca.SelectedItem = articulo.Marca;
+                    txt_URLImagen.Text = articulo.URLImagen;
+                    CargarImagen();
+                    cbx_Categoria.SelectedValue = articulo.Categoria.id;
+                    cbx_Marca.SelectedValue = articulo.Marca.id;
 
-                CargarImagen();
 
-                btn_Grabar.Text = "ACTUALIZAR DATOS";
+                   
             }
         }
 
@@ -69,8 +79,10 @@ namespace GestorArchivos
             try
             {
                 cbx_Categoria.DataSource = CatNeg.listar();
+                cbx_Categoria.ValueMember = "Id";
                 cbx_Categoria.DisplayMember = "Descripcion";
                 
+
 
             }
             catch (Exception)
@@ -86,7 +98,10 @@ namespace GestorArchivos
             {
                 MarcaNegocio MarcaNeg = new MarcaNegocio();
                 cbx_Marca.DataSource = MarcaNeg.listar();
+                cbx_Marca.ValueMember = "Id";
                 cbx_Marca.DisplayMember = "Descripcion";
+
+             
 
             }
             catch (Exception)
@@ -105,30 +120,33 @@ namespace GestorArchivos
 
         private void btn_Grabar_Click(object sender, EventArgs e)
         {
-            Articulo nuevo = new Articulo();
+           
             ArticuloNegocio negocio = new ArticuloNegocio();
+
             try
             {
-                
-                nuevo.Codigo = txt_Codigo.Text;
-                nuevo.Nombre = txt_Nombre.Text;
-                nuevo.Descripcion = txt_Descripcion.Text;
-                nuevo.Categoria = (Categoria)cbx_Categoria.SelectedItem;
-                nuevo.Marca = (Marca)cbx_Marca.SelectedItem;
-                nuevo.URLImagen = txt_URLImagen.Text;
-                nuevo.Precio = decimal.Parse(txt_Precio.Text.Replace(".", ","));
-                
-                if (btn_Grabar.Text == "GRABAR")
+                if (articulo == null)
+                    articulo = new Articulo();
+
+                articulo.Codigo = txt_Codigo.Text;
+                articulo.Nombre = txt_Nombre.Text;
+                articulo.Descripcion = txt_Descripcion.Text;
+                articulo.Categoria = (Categoria)cbx_Categoria.SelectedItem;
+                articulo.Marca = (Marca)cbx_Marca.SelectedItem;
+                articulo.URLImagen = txt_URLImagen.Text;
+                articulo.Precio = decimal.Parse(txt_Precio.Text.Replace(".", ","));
+
+                if (articulo.id != 0)
                 {
-                    negocio.agregar(nuevo);
-                    MessageBox.Show("Agregado exitosamente");
+                    negocio.Actualizar(articulo);
+                    MessageBox.Show("Actualizados los datos exitosamente");
                 }
                 else
                 {
-                    negocio.Actualizar(NroID,nuevo);
-                    MessageBox.Show("Actualizados los datos exitosamente");
-                    
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Agregado exitosamente");
                 }
+               
                 
                 Close();
     }           

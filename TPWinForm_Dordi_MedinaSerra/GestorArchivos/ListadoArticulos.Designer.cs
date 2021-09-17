@@ -30,7 +30,7 @@ namespace GestorArchivos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl_Menu = new System.Windows.Forms.Panel();
             this.lbl_Menu = new System.Windows.Forms.Label();
             this.lbl_Filtrar = new System.Windows.Forms.Label();
@@ -49,6 +49,8 @@ namespace GestorArchivos
             this.pbx_Seleccion_dgv = new System.Windows.Forms.PictureBox();
             this.btn_NuevoArticulo = new System.Windows.Forms.Button();
             this.btn_Cerrar = new System.Windows.Forms.Button();
+            this.btn_Modificar = new System.Windows.Forms.Button();
+            this.btn_Borrar = new System.Windows.Forms.Button();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Articulos)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -91,6 +93,7 @@ namespace GestorArchivos
             this.txt_Filtro.Name = "txt_Filtro";
             this.txt_Filtro.Size = new System.Drawing.Size(776, 20);
             this.txt_Filtro.TabIndex = 3;
+            this.txt_Filtro.TextChanged += new System.EventHandler(this.txt_Filtro_TextChanged);
             this.txt_Filtro.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_Filtro_KeyUp);
             // 
             // dgv_Articulos
@@ -185,9 +188,9 @@ namespace GestorArchivos
             // 
             this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Precio.DataPropertyName = "Precio";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = null;
-            this.Precio.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.NullValue = null;
+            this.Precio.DefaultCellStyle = dataGridViewCellStyle3;
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
@@ -216,12 +219,13 @@ namespace GestorArchivos
             this.pbx_Seleccion_dgv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbx_Seleccion_dgv.TabIndex = 5;
             this.pbx_Seleccion_dgv.TabStop = false;
+            this.pbx_Seleccion_dgv.Click += new System.EventHandler(this.pbx_Seleccion_dgv_Click);
             // 
             // btn_NuevoArticulo
             // 
-            this.btn_NuevoArticulo.Location = new System.Drawing.Point(808, 73);
+            this.btn_NuevoArticulo.Location = new System.Drawing.Point(12, 421);
             this.btn_NuevoArticulo.Name = "btn_NuevoArticulo";
-            this.btn_NuevoArticulo.Size = new System.Drawing.Size(129, 61);
+            this.btn_NuevoArticulo.Size = new System.Drawing.Size(122, 35);
             this.btn_NuevoArticulo.TabIndex = 6;
             this.btn_NuevoArticulo.Text = "NUEVO ARTICULO";
             this.btn_NuevoArticulo.UseVisualStyleBackColor = true;
@@ -237,11 +241,33 @@ namespace GestorArchivos
             this.btn_Cerrar.UseVisualStyleBackColor = true;
             this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
             // 
+            // btn_Modificar
+            // 
+            this.btn_Modificar.Location = new System.Drawing.Point(140, 421);
+            this.btn_Modificar.Name = "btn_Modificar";
+            this.btn_Modificar.Size = new System.Drawing.Size(122, 35);
+            this.btn_Modificar.TabIndex = 8;
+            this.btn_Modificar.Text = "MODIFICAR";
+            this.btn_Modificar.UseVisualStyleBackColor = true;
+            this.btn_Modificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btn_Borrar
+            // 
+            this.btn_Borrar.Location = new System.Drawing.Point(268, 421);
+            this.btn_Borrar.Name = "btn_Borrar";
+            this.btn_Borrar.Size = new System.Drawing.Size(122, 35);
+            this.btn_Borrar.TabIndex = 9;
+            this.btn_Borrar.Text = "BORRAR";
+            this.btn_Borrar.UseVisualStyleBackColor = true;
+            this.btn_Borrar.Click += new System.EventHandler(this.BORRARARTICULOToolStripMenuItem_Click);
+            // 
             // ListadoArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1112, 417);
+            this.ClientSize = new System.Drawing.Size(1112, 468);
+            this.Controls.Add(this.btn_Borrar);
+            this.Controls.Add(this.btn_Modificar);
             this.Controls.Add(this.btn_Cerrar);
             this.Controls.Add(this.btn_NuevoArticulo);
             this.Controls.Add(this.pbx_Seleccion_dgv);
@@ -281,5 +307,7 @@ namespace GestorArchivos
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrlImagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Button btn_Modificar;
+        private System.Windows.Forms.Button btn_Borrar;
     }
 }

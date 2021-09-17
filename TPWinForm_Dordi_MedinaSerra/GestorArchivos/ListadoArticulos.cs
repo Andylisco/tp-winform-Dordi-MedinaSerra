@@ -156,5 +156,29 @@ namespace GestorArchivos
                 new AMB_Articulo((int)dgv_Articulos.CurrentRow.Cells["ID"].Value).ShowDialog();
             }
         }
+
+        private void pbx_Seleccion_dgv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
+
+            AMB_Articulo modificar = new AMB_Articulo(seleccionado);
+            modificar.ShowDialog();
+            CargarGrilla();
+        }
+
+        private void txt_Filtro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

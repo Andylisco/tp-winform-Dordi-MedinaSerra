@@ -34,8 +34,6 @@ namespace GestorArchivos
             this.mt_Menu = new System.Windows.Forms.MenuStrip();
             this.aMBArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearNuevoArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.borrarArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarPorCodigoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,9 +77,7 @@ namespace GestorArchivos
             // aMBArticulosToolStripMenuItem
             // 
             this.aMBArticulosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crearNuevoArticuloToolStripMenuItem,
-            this.modificarArticuloToolStripMenuItem,
-            this.borrarArticuloToolStripMenuItem});
+            this.crearNuevoArticuloToolStripMenuItem});
             this.aMBArticulosToolStripMenuItem.Name = "aMBArticulosToolStripMenuItem";
             this.aMBArticulosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.aMBArticulosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -95,20 +91,6 @@ namespace GestorArchivos
             this.crearNuevoArticuloToolStripMenuItem.Text = "Crear &Nuevo Articulo";
             this.crearNuevoArticuloToolStripMenuItem.Click += new System.EventHandler(this.crearNuevoArticuloToolStripMenuItem_Click);
             // 
-            // modificarArticuloToolStripMenuItem
-            // 
-            this.modificarArticuloToolStripMenuItem.Name = "modificarArticuloToolStripMenuItem";
-            this.modificarArticuloToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.modificarArticuloToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.modificarArticuloToolStripMenuItem.Text = "&Modificar Articulo";
-            // 
-            // borrarArticuloToolStripMenuItem
-            // 
-            this.borrarArticuloToolStripMenuItem.Name = "borrarArticuloToolStripMenuItem";
-            this.borrarArticuloToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.borrarArticuloToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.borrarArticuloToolStripMenuItem.Text = "&Borrar Articulo";
-            // 
             // listadosToolStripMenuItem
             // 
             this.listadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -117,6 +99,7 @@ namespace GestorArchivos
             this.listadosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
             this.listadosToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.listadosToolStripMenuItem.Text = "&Listados ";
+            this.listadosToolStripMenuItem.Click += new System.EventHandler(this.listadosToolStripMenuItem_Click);
             // 
             // buscarPorCodigoToolStripMenuItem
             // 
@@ -163,8 +146,6 @@ namespace GestorArchivos
         private System.Windows.Forms.ToolStripMenuItem listadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarPorCodigoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearNuevoArticuloToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarArticuloToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem borrarArticuloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
     }
 }

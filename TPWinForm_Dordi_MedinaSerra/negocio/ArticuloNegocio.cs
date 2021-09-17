@@ -130,7 +130,7 @@ namespace negocio
             
         }
 
-        public void Actualizar(int NroID, Articulo nuevo)
+        public void Actualizar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -145,7 +145,7 @@ namespace negocio
                 datos.setearParametros("@IdCategoria",nuevo.Categoria.id);
                 datos.setearParametros("@URLimagen", nuevo.URLImagen);
                 datos.setearParametros("@Precio",nuevo.Precio.ToString().Replace(",", "."));
-                datos.setearParametros("@ID",NroID);
+                datos.setearParametros("@ID",nuevo.id );
                 datos.ejecutarAccion();
             
                 datos.cerrarConexion();

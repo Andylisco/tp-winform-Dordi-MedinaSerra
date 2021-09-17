@@ -39,5 +39,15 @@ namespace GestorArchivos
         {
 
         }
+
+        private void modificarArticuloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void listadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
