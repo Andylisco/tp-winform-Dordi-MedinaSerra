@@ -63,8 +63,14 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOS");
-               
+                //datos.setearConsulta("SELECT id, Codigo = ISNULL(Codigo,''),Nombre = ISNULL(Nombre,''), Descripcion = ISNULL(Descripcion,''), IdMarca = ISNULL(IdMarca,0), IdCategoria = ISNULL(IdCategoria,0), ImagenURL = ISNULL(ImagenUrl,''), Precio = ISNULL(Precio,0.0) FROM ARTICULOSMarca");
+                datos.setearConsulta("SELECT Ar.id, Codigo = ISNULL(Ar.Codigo,''),Nombre = ISNULL(Ar.Nombre,'')" +
+                                     ", Descripcion = ISNULL(Ar.Descripcion, ''), IdMarca = ISNULL(Ar.IdMarca, 0)," +
+                                     " IdCategoria = ISNULL(Ar.IdCategoria, 0), ImagenURL = ISNULL(Ar.ImagenUrl, ''), " +
+                                     "Precio = ISNULL(Ar.Precio, 0.0), Cate_Des = ISNULL(Ca.Descripcion,''), Mar_Des = ISNULL(Ma.Descripcion,'') " +
+                                     "FROM ARTICULOS Ar INNER JOIN CATEGORIAS Ca on ar.IdCategoria = Ca.Id " +
+                                     "INNER JOIN MARCAS Ma ON Ar.IdMarca = Ma.Id");
+
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -80,11 +86,11 @@ namespace negocio
                     //SE CARGA LAS PROPIEDADES MARCA Y CATEGORIA COMO OBJETOS
                     aux.Marca = new Marca();
                     aux.Marca.id = (int)datos.Lector["IdMarca"];
-                    aux.Marca.Descripcion = "";
+                    aux.Marca.Descripcion = (string)datos.Lector["Mar_Des"];
 
                     aux.Categoria = new Categoria();
                     aux.Categoria.id = (int)datos.Lector["IdCategoria"];
-                    aux.Categoria.Descripcion = "";
+                    aux.Categoria.Descripcion = (string)datos.Lector["Cate_Des"];
                     
                    
                     aux.URLImagen = (string)datos.Lector["ImagenURL"];

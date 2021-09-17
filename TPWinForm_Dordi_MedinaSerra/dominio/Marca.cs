@@ -14,7 +14,7 @@ namespace dominio
 
         public override string ToString()
         {
-            return id.ToString();
+            return Descripcion.ToString();
         }
         
         

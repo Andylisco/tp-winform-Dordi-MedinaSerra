@@ -57,11 +57,13 @@ namespace GestorArchivos
             }
             List<Articulo> ListaFiltra = LISTAGLOBAL;
             //ListaFiltra = ListaFiltra.Where(x => x.id == int.Parse(txt_Filtro.Text)).ToList();
-            ListaFiltra = ListaFiltra.Where(x => (x.id.ToString().Contains(txt_Filtro.Text.Trim())) 
-                                            | (x.Codigo.ToUpper().Contains(txt_Filtro.Text.Trim().ToUpper())) 
+            ListaFiltra = ListaFiltra.Where(x =>  (x.Codigo.ToUpper().Contains(txt_Filtro.Text.Trim().ToUpper())) 
                                             | (x.Descripcion.ToUpper().Contains(txt_Filtro.Text.Trim().ToUpper()))
                                             | (x.Nombre.ToUpper().Contains(txt_Filtro.Text.Trim().ToUpper()))
-                                            | (x.Precio.ToString().Contains(txt_Filtro.Text.Trim()))).ToList();
+                                            | (x.Precio.ToString().Contains(txt_Filtro.Text.Trim()))
+                                            | (x.Categoria.Descripcion.ToUpper().Contains(txt_Filtro.Text.Trim().ToUpper()))
+                                            | (x.Marca.Descripcion.ToUpper().Contains(txt_Filtro.Text.Trim().ToUpper()))
+                                            ).ToList();
             dgv_Articulos.DataSource = ListaFiltra;
         }
 
@@ -110,6 +112,7 @@ namespace GestorArchivos
             {
                 ArticuloNegocio NegArt = new ArticuloNegocio();
                 NegArt.BorrarArt((int)dgv_Articulos.CurrentRow.Cells["id"].Value);
+                CargarGrilla();
             }
         }
 
@@ -153,16 +156,9 @@ namespace GestorArchivos
         {
             if (e.ColumnIndex != -1)
             {
-                new AMB_Articulo((int)dgv_Articulos.CurrentRow.Cells["ID"].Value).ShowDialog();
+                btnModificar_Click(null, null);
             }
         }
-
-        private void pbx_Seleccion_dgv_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -174,11 +170,7 @@ namespace GestorArchivos
             CargarGrilla();
         }
 
-        private void txt_Filtro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
        
     }
 }
