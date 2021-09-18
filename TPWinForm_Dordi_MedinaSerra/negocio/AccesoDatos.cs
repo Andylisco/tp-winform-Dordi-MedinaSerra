@@ -41,7 +41,7 @@ namespace negocio
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }            
         }
 

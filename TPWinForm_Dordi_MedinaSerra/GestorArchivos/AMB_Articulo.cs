@@ -20,25 +20,21 @@ namespace GestorArchivos
         private Articulo articulo = null;
 
         int NroID;
-        public AMB_Articulo(int Id = 0)
+        public AMB_Articulo()
         {
             InitializeComponent();
-
-            if (Id != 0)
-            {
-                NroID = Id;
-            }
+            Text = "Nuevo Articulo";
+            
         }
-        public AMB_Articulo(Articulo articulo,int Id = 0)
+        public AMB_Articulo(Articulo articulo)
         {
             InitializeComponent();
             this.articulo = articulo;
             Text = "Modificar Articulo";
-            if (Id != 0)
-            {
-                NroID = articulo.id;
-            }
+
+            NroID = articulo.id;
         }
+            
 
 
         private void AMB_Articulo_Load(object sender, EventArgs e)
@@ -111,11 +107,14 @@ namespace GestorArchivos
         
         }
 
-        
+
 
         private void btn_Cerrar_Click(object sender, EventArgs e)
         {
-            Close();
+            if (MessageBox.Show("Los valores que no fueron grabados se perderán." + Environment.NewLine + "¿Desea cerrar de todos modos la ventana?" , "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void btn_Grabar_Click(object sender, EventArgs e)
@@ -191,7 +190,7 @@ namespace GestorArchivos
                 catch (Exception)
                 {
 
-                    pbx_ImagenArticulo.Load("https://847395.smushcdn.com/1790738/wp-content/uploads/2015/09/imagen-no-encontrada.jpg?lossy=0&strip=1&webp=1");
+                    pbx_ImagenArticulo.Load("https://dam.muyinteresante.com.mx/wp-content/uploads/2020/04/error-404.jpg");
                 }
                 
             }
@@ -203,7 +202,19 @@ namespace GestorArchivos
                 e.Handled = true;
         }
 
-        
+        private void btn_Limpiar_Click(object sender, EventArgs e)
+        {
+            txt_Codigo.Text = "";
+            txt_Nombre.Text = "";
+            txt_Descripcion.Text = "";
+            txt_Precio.Text = "";
+            txt_URLImagen.Text = "";
+
+            cbx_Categoria.SelectedIndex = 0;
+            cbx_Marca.SelectedIndex = 0;
+
+            pbx_ImagenArticulo.Image = null;
+        }
     }
 
     

@@ -25,6 +25,8 @@ namespace GestorArchivos
 
         private void ListadoArticulos_Load(object sender, EventArgs e)
         {
+            dgv_Articulos.DefaultCellStyle.SelectionBackColor = Color.Teal;
+            dgv_Articulos.DefaultCellStyle.SelectionForeColor = Color.White;
             CargarGrilla();
         }
         
@@ -42,9 +44,9 @@ namespace GestorArchivos
                 txt_Filtro.Text = "";
                         
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show("Error al cargar datos en la grilla", "Conexion Articulos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar datos en la grilla.", "Conexion Articulos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,9 +86,9 @@ namespace GestorArchivos
             {
                 pbx_Seleccion_dgv.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                pbx_Seleccion_dgv.Load("https://847395.smushcdn.com/1790738/wp-content/uploads/2015/09/imagen-no-encontrada.jpg?lossy=0&strip=1&webp=1");
+                pbx_Seleccion_dgv.Load("https://dam.muyinteresante.com.mx/wp-content/uploads/2020/04/error-404.jpg");
             }
         }
 
@@ -110,9 +112,19 @@ namespace GestorArchivos
             if (MessageBox.Show("¿Esta seguro que desea borrar el Articulo ID: " + dgv_Articulos.CurrentRow.Cells["id"].Value +
                              " " + dgv_Articulos.CurrentRow.Cells["Descripcion"].Value + "?", "Confirmar Baja Articulo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ArticuloNegocio NegArt = new ArticuloNegocio();
-                NegArt.BorrarArt((int)dgv_Articulos.CurrentRow.Cells["id"].Value);
-                CargarGrilla();
+                try
+                {
+                    ArticuloNegocio NegArt = new ArticuloNegocio();
+                    NegArt.BorrarArt((int)dgv_Articulos.CurrentRow.Cells["id"].Value);
+                    CargarGrilla();
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Error al intentar borrar un registro.", "Conexion Articulos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                
             }
         }
 
@@ -123,34 +135,6 @@ namespace GestorArchivos
             CargarGrilla();
         }
 
-
-
-        private void dgv_Articulos_MouseDown_1(object sender, MouseEventArgs e)
-        {
-            try
-            {
-
-                if (e.Button == MouseButtons.Right)
-                    {
-                        if (dgv_Articulos.SelectedRows.Count > 1)
-                        {
-                            return;
-                        }
-
-                        HitTestInfo WHit = dgv_Articulos.HitTest(e.X, e.Y);
-
-                        if(WHit.Type == DataGridViewHitTestType.Cell)
-                        {                        
-                            dgv_Articulos.CurrentCell = dgv_Articulos.Rows[WHit.RowIndex].Cells[WHit.ColumnIndex];
-                        }
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
 
         private void dgv_Articulos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -170,7 +154,9 @@ namespace GestorArchivos
             CargarGrilla();
         }
 
-      
-       
+        private void mODIFICARARTICULOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnModificar_Click(null, null);
+        }
     }
 }
