@@ -37,6 +37,10 @@
         <asp:Label ID="lbl_URLImagen" runat="server" Text="URL Imagen"></asp:Label>
         <asp:TextBox ID="txt_URLImagen" runat="server"></asp:TextBox>
     </div>
+
+    <div>
+        <asp:Button Text="Grabar Articulo" ID="btnGrabar" OnClick="btnGrabar_Click" runat="server" />
+    </div>
     
 
 </asp:Content>
