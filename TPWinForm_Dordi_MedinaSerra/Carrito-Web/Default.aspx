@@ -5,7 +5,7 @@
     <!--pone un separador-->
     <hr />
 
-    <asp:GridView ID="dgvArticulos" runat="server" style="Table"></asp:GridView>
+    <asp:GridView ID="dgvArticulos" runat="server" style="table-layout"></asp:GridView>
 
     <div>
         <a href="/ArticuloForm">AGREGAR ARTICULO</a>
